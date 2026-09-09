@@ -1,0 +1,490 @@
+<title>ChipZone Reparaciones</title>
+<meta name="description" content="Servicio técnico de computadoras y notebooks a domicilio en CABA. Retiro y entrega, presupuesto sin cargo, garantía por escrito. 14 años de experiencia.">
+<meta name="theme-color" content="#0A1420">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  /* ---------- tokens ---------- */
+  :root {
+    /* fixed brand / always-dark surfaces (from the ChipZone PCB logo) */
+    --pcb:        #0A1420;
+    --pcb-2:      #0E2033;
+    --pcb-line:   #1C3346;
+    --cyan:       #10A5DD;
+    --cyan-bright:#3BC6F0;
+    --trace:      #1FB487;   /* pcb-trace green */
+    --wa:         #25D366;   /* WhatsApp, semantic */
+    --wa-press:   #1EB257;
+    --on-pcb:     #E9F2F8;
+    --on-pcb-dim: #90A7B8;
+
+    /* themeable surfaces — light defaults */
+    --bg:        #F5F8FA;
+    --surface:   #FFFFFF;
+    --surface-2: #EAF1F5;
+    --ink:       #0C1826;
+    --ink-2:     #4C5E6E;
+    --line:      #DCE6EC;
+    --accent:    var(--cyan);
+
+    --maxw: 62rem;
+    --r: 14px;
+    --shadow: 0 1px 2px rgba(10,20,32,.06), 0 8px 24px -12px rgba(10,20,32,.18);
+    --font-display: "Archivo", system-ui, sans-serif;
+    --font-body: "IBM Plex Sans", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:        #081019;
+      --surface:   #0E1E30;
+      --surface-2: #122840;
+      --ink:       #E7EFF5;
+      --ink-2:     #9BB0C0;
+      --line:      #1E3346;
+      --accent:    var(--cyan-bright);
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:        #081019;
+    --surface:   #0E1E30;
+    --surface-2: #122840;
+    --ink:       #E7EFF5;
+    --ink-2:     #9BB0C0;
+    --line:      #1E3346;
+    --accent:    var(--cyan-bright);
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.6);
+  }
+
+  /* ---------- base ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.1; text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 1.25rem; }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: .74rem;
+    font-weight: 600;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+    padding: .95rem 1.5rem; border-radius: 999px; border: 0;
+    text-decoration: none; cursor: pointer; transition: transform .12s ease, background .15s ease;
+  }
+  .btn svg { width: 1.2em; height: 1.2em; flex: none; }
+  .btn--wa { background: var(--wa); color: #052e15; }
+  .btn--wa:hover { background: var(--wa-press); }
+  .btn--wa:active { transform: translateY(1px); }
+  .btn--ghost {
+    background: transparent; color: var(--on-pcb);
+    border: 1.5px solid rgba(233,242,248,.28); font-weight: 600; font-size: .98rem;
+    padding: .8rem 1.25rem;
+  }
+  .btn--ghost:hover { border-color: var(--cyan-bright); color: var(--cyan-bright); }
+  .btn--line {
+    background: var(--surface); color: var(--ink); border: 1.5px solid var(--line); font-weight: 600;
+  }
+  .btn--line:hover { border-color: var(--accent); color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan-bright); outline-offset: 3px; }
+
+  /* ---------- hero (always dark) ---------- */
+  .hero {
+    background: var(--pcb);
+    background-image:
+      radial-gradient(120% 80% at 78% 0%, rgba(31,180,135,.18), transparent 55%),
+      radial-gradient(90% 70% at 10% 8%, rgba(16,165,221,.20), transparent 60%);
+    color: var(--on-pcb);
+    border-bottom: 1px solid var(--pcb-line);
+    padding-block: 1.5rem 3.25rem;
+  }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+  /* wordmark — web adaptation of the ChipZone logo */
+  .mark {
+    display: inline-flex; align-items: baseline; gap: .12em;
+    font-family: var(--font-display); font-weight: 800; letter-spacing: -.01em;
+    text-decoration: none; padding: .32rem .9rem;
+    border: 2px solid var(--cyan-bright); border-radius: 999px;
+    background: linear-gradient(180deg, rgba(16,165,221,.14), rgba(10,20,32,.1));
+    line-height: 1;
+  }
+  .mark b {
+    font-size: 1.36rem; font-weight: 800;
+    background: linear-gradient(120deg, var(--cyan-bright), var(--trace) 70%, #bff3d9);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .mark span {
+    font-size: 1.08rem; font-weight: 700; letter-spacing: .06em;
+    color: rgba(233,242,248,.16); -webkit-text-stroke: 1.1px var(--on-pcb);
+  }
+  .hours-pill {
+    font-family: var(--font-mono); font-size: .72rem; letter-spacing: .04em;
+    color: var(--on-pcb-dim); border: 1px solid var(--pcb-line); border-radius: 999px;
+    padding: .4rem .7rem; white-space: nowrap;
+  }
+  .hours-pill b { color: var(--trace); font-weight: 600; }
+
+  .hero-inner { margin-top: 2.75rem; max-width: 40rem; }
+  .hero h1 {
+    font-size: clamp(2.05rem, 6.4vw, 3.15rem);
+    font-weight: 800; letter-spacing: -.02em;
+  }
+  .hero h1 .hl { color: var(--cyan-bright); }
+  .hero-sub {
+    margin-top: 1rem; font-size: 1.12rem; color: #cddbe5; max-width: 34rem;
+  }
+  .hero-cta { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+  .hero-note { font-family: var(--font-mono); font-size: .8rem; color: var(--on-pcb-dim); }
+
+  .trust {
+    margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: .55rem .5rem;
+    border-top: 1px solid var(--pcb-line); padding-top: 1.4rem;
+  }
+  .trust li {
+    list-style: none; display: inline-flex; align-items: center; gap: .45rem;
+    font-size: .88rem; color: #d5e1ea; font-weight: 500;
+    padding: .38rem .8rem; border: 1px solid var(--pcb-line); border-radius: 999px;
+  }
+  .trust li svg { width: 1rem; height: 1rem; color: var(--trace); flex: none; }
+  .trust li.rating b { color: #FFCA3A; font-weight: 700; }
+
+  /* ---------- generic section ---------- */
+  section { padding-block: 3.5rem; }
+  .sec-head { max-width: 40rem; margin-bottom: 2rem; }
+  .sec-head h2 { font-size: clamp(1.55rem, 4.4vw, 2.1rem); margin-top: .5rem; letter-spacing: -.015em; }
+  .sec-head p { margin-top: .7rem; color: var(--ink-2); }
+
+  .divider { height: 1px; background: var(--line); border: 0; margin: 0; }
+  .trace-rule {
+    display: block; width: 100%; height: 14px; margin: 0; color: var(--accent); opacity: .5;
+  }
+
+  /* ---------- steps ---------- */
+  .steps { display: grid; gap: 1rem; grid-template-columns: 1fr; counter-reset: step; }
+  .step {
+    display: grid; grid-template-columns: auto 1fr; gap: 1rem 1.1rem;
+    padding: 1.35rem; background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--r);
+  }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    font-family: var(--font-mono); font-weight: 600; font-size: 1rem;
+    width: 2.1rem; height: 2.1rem; display: grid; place-items: center;
+    color: var(--pcb); background: var(--accent); border-radius: 8px;
+  }
+  .step h3 { font-size: 1.12rem; align-self: center; }
+  .step p { grid-column: 2; color: var(--ink-2); font-size: .98rem; }
+
+  /* ---------- services ---------- */
+  .svc-group + .svc-group { margin-top: 2.25rem; }
+  .svc-group > h3 {
+    font-family: var(--font-mono); font-weight: 600; font-size: .8rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-2); margin-bottom: 1rem;
+  }
+  .feature { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  .fcard {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 1.4rem; display: flex; flex-direction: column; gap: .5rem;
+  }
+  .fcard h4 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; margin: 0; }
+  .fcard p { color: var(--ink-2); font-size: .96rem; flex: 1; }
+  .price {
+    font-family: var(--font-mono); font-weight: 600; font-size: .92rem;
+    color: var(--trace); display: inline-flex; align-items: baseline; gap: .4rem;
+    padding-top: .5rem; border-top: 1px dashed var(--line);
+  }
+  .price small { color: var(--ink-2); font-weight: 500; font-size: .78rem; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: .55rem; }
+  .chips li {
+    list-style: none; font-size: .92rem; font-weight: 500;
+    padding: .5rem .85rem; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 999px; color: var(--ink);
+  }
+
+  /* ---------- why ---------- */
+  .why { background: var(--surface-2); }
+  .why .grid { display: grid; gap: 1.1rem; grid-template-columns: 1fr; }
+  .why-item { display: grid; grid-template-columns: auto 1fr; gap: .35rem 1rem; }
+  .why-item svg { width: 1.5rem; height: 1.5rem; color: var(--accent); grid-row: span 2; }
+  .why-item h3 { font-size: 1.05rem; }
+  .why-item p { color: var(--ink-2); font-size: .96rem; }
+
+  /* ---------- reviews ---------- */
+  .reviews {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 1.25rem; padding: 1.6rem; background: var(--surface);
+    border: 1px solid var(--line); border-radius: var(--r);
+  }
+  .stars { display: flex; align-items: center; gap: .6rem; }
+  .stars .num { font-family: var(--font-display); font-weight: 800; font-size: 2rem; letter-spacing: -.02em; }
+  .stars .glyphs { color: #FFCA3A; font-size: 1.1rem; letter-spacing: .05em; }
+  .stars .glyphs span { color: var(--line); }
+  .reviews .meta { font-size: .92rem; color: var(--ink-2); }
+
+  /* ---------- closing CTA (always dark) ---------- */
+  .closing {
+    background: var(--pcb);
+    background-image: radial-gradient(80% 120% at 50% 0%, rgba(16,165,221,.22), transparent 60%);
+    color: var(--on-pcb); text-align: center; border-top: 1px solid var(--pcb-line);
+  }
+  .closing h2 { font-size: clamp(1.6rem, 5vw, 2.3rem); }
+  .closing p { margin: .8rem auto 0; color: #cddbe5; max-width: 30rem; }
+  .closing .btn--wa { margin-top: 1.6rem; }
+  .closing .phone {
+    margin-top: 1.1rem; font-family: var(--font-mono); font-size: .95rem; color: var(--on-pcb-dim);
+  }
+
+  /* ---------- footer ---------- */
+  footer { background: var(--pcb-2); color: var(--on-pcb-dim); border-top: 1px solid var(--pcb-line); }
+  footer .wrap { padding-block: 2.5rem 4.5rem; display: grid; gap: 1.5rem; }
+  .foot-brand { color: var(--on-pcb); font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+  .foot-cols { display: grid; gap: 1.4rem; grid-template-columns: 1fr; font-size: .92rem; line-height: 1.9; }
+  .foot-cols b { color: var(--on-pcb); font-weight: 600; display: block; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .3rem; }
+  .foot-social { display: flex; gap: .8rem; }
+  .foot-social a {
+    width: 2.5rem; height: 2.5rem; display: grid; place-items: center;
+    border: 1px solid var(--pcb-line); border-radius: 10px; color: var(--on-pcb-dim);
+    transition: color .15s, border-color .15s;
+  }
+  .foot-social a:hover { color: var(--cyan-bright); border-color: var(--cyan-bright); }
+  .foot-social svg { width: 1.15rem; height: 1.15rem; }
+  .legal { font-size: .8rem; color: #5c7183; }
+
+  /* ---------- sticky mobile CTA ---------- */
+  .dock {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
+    background: var(--bg);
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line);
+    display: flex;
+  }
+  .dock .btn { flex: 1; }
+  @media (min-width: 720px) { .dock { display: none; } }
+  body { padding-bottom: 4.75rem; }
+  @media (min-width: 720px) { body { padding-bottom: 0; } }
+
+  /* ---------- responsive up ---------- */
+  @media (min-width: 720px) {
+    .steps { grid-template-columns: repeat(3, 1fr); align-content: start; }
+    .step { grid-template-columns: 1fr; }
+    .step p { grid-column: 1; }
+    .feature { grid-template-columns: repeat(3, 1fr); }
+    .why .grid { grid-template-columns: 1fr 1fr; gap: 1.75rem 2.5rem; }
+    .foot-cols { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="mark" href="#top" aria-label="ChipZone, inicio"><b>CHIP</b><span>ZONE</span></a>
+      <span class="hours-pill">Lun a Vie <b>10–18 h</b></span>
+    </div>
+
+    <div class="hero-inner" id="top">
+      <p class="eyebrow">Servicio técnico · 14 años de experiencia</p>
+      <h1>Reparación de computadoras y notebooks <span class="hl">a domicilio</span></h1>
+      <p class="hero-sub">Servicio técnico en toda la Ciudad de Buenos Aires. Retiramos el equipo en tu domicilio, lo reparamos y te lo devolvemos funcionando. Presupuesto sin cargo.</p>
+
+      <div class="hero-cta">
+        <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%2C%20quiero%20consultar%20por%20una%20reparaci%C3%B3n.%20Equipo%3A%20___%20Falla%3A%20___" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+          Consultar por WhatsApp
+        </a>
+        <span class="hero-note">Presupuesto sin cargo</span>
+      </div>
+    </div>
+
+    <ul class="trust">
+      <li class="rating"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:#FFCA3A"><path d="M12 2.5l2.9 6.03 6.6.86-4.85 4.55 1.24 6.56L12 17.4l-5.89 3.1 1.24-6.56L2.5 9.39l6.6-.86z"/></svg><b>4,3</b> en Google · 10 reseñas</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>14 años de experiencia</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Presupuesto sin cargo</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Garantía por escrito</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Retiro y entrega en CABA</li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cómo trabajamos</p>
+        <h2>El proceso, en tres pasos</h2>
+        <p>Sin traslados y con la información clara desde el primer momento.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Escribinos por WhatsApp</h3>
+          <p>Indicanos qué equipo tenés y qué falla presenta. Te respondemos con un primer diagnóstico y los pasos a seguir.</p>
+        </div>
+        <div class="step">
+          <h3>Retiramos el equipo</h3>
+          <p>Coordinamos el retiro en tu domicilio, en cualquier barrio de la Ciudad. También podés acercarlo vos.</p>
+        </div>
+        <div class="step">
+          <h3>Te lo devolvemos funcionando</h3>
+          <p>Trabajamos con el presupuesto aprobado previamente y entregamos con garantía por escrito. Muchas reparaciones se resuelven en el día.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Servicios</p>
+        <h2>Reparación de PC, notebooks y netbooks</h2>
+        <p>Diagnóstico y reparación de hardware y software para equipos de hogar, oficina y uso profesional.</p>
+      </div>
+
+      <!-- PRECIOS: actualizar acá cuando cambien -->
+      <div class="svc-group">
+        <h3>Los más solicitados</h3>
+        <div class="feature">
+          <article class="fcard">
+            <h4>Cambio de disco a SSD y reinstalación</h4>
+            <p>Reemplazamos el disco mecánico por una unidad SSD y reinstalamos el sistema. El equipo mejora de forma notable su velocidad de arranque y de respuesta, sin necesidad de cambiarlo.</p>
+            <span class="price">desde $220.000 <small>incluye SSD de 480 GB</small></span>
+          </article>
+          <article class="fcard">
+            <h4>No enciende · Reparación de placa</h4>
+            <p>Diagnóstico a nivel componente. Equipos que no encienden, sin imagen, con apagados inesperados o pantalla azul. Evaluamos la falla y te indicamos si la reparación es conveniente.</p>
+            <span class="price">desde $185.000 <small>según la falla</small></span>
+          </article>
+          <article class="fcard">
+            <h4>Formateo, limpieza y optimización</h4>
+            <p>Equipos lentos, con software malicioso o publicidad no deseada. Formateo, limpieza integral del sistema y puesta a punto.</p>
+            <span class="price">Consultanos tu caso</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="svc-group">
+        <h3>También realizamos</h3>
+        <ul class="chips">
+          <li>Ampliación de memoria RAM</li>
+          <li>Cambio de pantalla de notebook</li>
+          <li>Cambio de teclado</li>
+          <li>Reparación de bisagras de notebook</li>
+          <li>Armado de PC a medida</li>
+          <li>Recuperación de datos</li>
+          <li>Instalación de redes y WiFi</li>
+          <li>Limpieza interna y cambio de pasta térmica</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Por qué elegirnos</p>
+        <h2>Trato directo y transparente</h2>
+      </div>
+      <div class="grid">
+        <div class="why-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <h3>Atención directa con el técnico</h3>
+          <p>Te atiende la persona que va a reparar tu equipo. Sin call center ni intermediarios.</p>
+        </div>
+        <div class="why-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/></svg>
+          <h3>Garantía por escrito</h3>
+          <p>Todos los trabajos se entregan con garantía. Si la falla reaparece, la resolvemos.</p>
+        </div>
+        <div class="why-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <h3>Presupuesto sin cargo</h3>
+          <p>Revisamos el equipo y te informamos la falla y el costo de la reparación. La decisión es tuya, sin compromiso.</p>
+        </div>
+        <div class="why-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/></svg>
+          <h3>14 años de experiencia</h3>
+          <p>Miles de equipos reparados. Conocemos las fallas habituales de cada modelo de PC y notebook.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <div class="wrap">
+      <div class="reviews">
+        <div class="stars">
+          <span class="num">4,3</span>
+          <div>
+            <div class="glyphs" aria-hidden="true">★★★★<span>★</span></div>
+            <div class="meta">10 opiniones en Google</div>
+          </div>
+        </div>
+        <a class="btn btn--line" href="https://g.page/r/CUiP3OKMawnZEBM/review" rel="noopener">Ver reseñas en Google</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>¿Tu equipo necesita servicio técnico?</h2>
+    <p>Escribinos por WhatsApp con el detalle de la falla y te indicamos cómo continuar. Presupuesto sin cargo.</p>
+    <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%2C%20quiero%20consultar%20por%20una%20reparaci%C3%B3n.%20Equipo%3A%20___%20Falla%3A%20___" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+      Consultar por WhatsApp
+    </a>
+    <p class="phone">o al 11 3933-3526</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">ChipZone · Servicio técnico de computadoras</div>
+    <div class="foot-cols">
+      <div><b>Zona</b>Balvanera, Ciudad de Buenos Aires<br>Retiro y entrega en toda la Ciudad</div>
+      <div><b>Horario</b>Lunes a viernes<br>de 10 a 18 h</div>
+      <div><b>Contacto</b>WhatsApp 11 3933-3526<br>Presupuesto sin cargo</div>
+    </div>
+    <div class="foot-social">
+      <a href="https://wa.me/5491139333526" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 11.74c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg></a>
+      <a href="https://www.instagram.com/chipzoneinformatica" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/ChipZone/" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3l.5-3H14V4.5c0-.8.3-1.5 1.6-1.5H18V.2C17.5.1 16.3 0 15 0c-2.9 0-4.7 1.7-4.7 4.9V6H7v3h3.3v9H14z"/></svg></a>
+    </div>
+    <p class="legal">ChipZone — Servicio técnico presencial de computadoras y notebooks en la Ciudad de Buenos Aires.</p>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%2C%20quiero%20consultar%20por%20una%20reparaci%C3%B3n.%20Equipo%3A%20___%20Falla%3A%20___" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 11.74c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+    WhatsApp
+  </a>
+</div>
