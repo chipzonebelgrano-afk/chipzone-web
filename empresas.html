@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChipZone Empresas — Soporte Informático para PyMEs y Oficinas en CABA</title>
+<meta name="description" content="Servicio informático para empresas, oficinas y comercios de la Ciudad de Buenos Aires. Atención de incidentes, equipos, redes y WiFi. 14 años de experiencia.">
+<meta name="theme-color" content="#0A1420">
+<link rel="canonical" href="https://chipzoneinformatica.com.ar/empresas.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="geo.region" content="AR-C">
+<meta name="geo.placename" content="Balvanera, Ciudad Autónoma de Buenos Aires">
+<meta property="og:title" content="ChipZone Empresas — Soporte informático para PyMEs en CABA">
+<meta property="og:description" content="Atendemos el parque informático de tu empresa: equipos, redes y WiFi. Trato directo con el técnico. 14 años en la Ciudad de Buenos Aires.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chipzoneinformatica.com.ar/empresas.html">
+<meta property="og:locale" content="es_AR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --pcb: #0A1420;
+    --pcb-2: #0E2033;
+    --pcb-line: #1C3346;
+    --cyan: #10A5DD;
+    --cyan-bright: #3BC6F0;
+    --trace: #1FB487;
+    --wa: #25D366;
+    --wa-press: #1EB257;
+    --on-pcb: #E9F2F8;
+    --on-pcb-dim: #90A7B8;
+
+    --bg: #F5F8FA;
+    --surface: #FFFFFF;
+    --surface-2: #EAF1F5;
+    --ink: #0C1826;
+    --ink-2: #4C5E6E;
+    --line: #DCE6EC;
+    --accent: var(--cyan);
+
+    --maxw: 62rem;
+    --r: 14px;
+    --font-display: "Archivo", system-ui, sans-serif;
+    --font-body: "IBM Plex Sans", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #081019; --surface: #0E1E30; --surface-2: #122840;
+      --ink: #E7EFF5; --ink-2: #9BB0C0; --line: #1E3346; --accent: var(--cyan-bright);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #081019; --surface: #0E1E30; --surface-2: #122840;
+    --ink: #E7EFF5; --ink-2: #9BB0C0; --line: #1E3346; --accent: var(--cyan-bright);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.12; text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  a { color: inherit; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 1.25rem; }
+  .eyebrow {
+    font-family: var(--font-mono); font-size: .74rem; font-weight: 600;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--accent);
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+    padding: .95rem 1.5rem; border-radius: 999px; border: 0;
+    text-decoration: none; cursor: pointer; transition: transform .12s ease, background .15s ease;
+  }
+  .btn svg { width: 1.2em; height: 1.2em; flex: none; }
+  .btn--wa { background: var(--wa); color: #052e15; }
+  .btn--wa:hover { background: var(--wa-press); }
+  .btn--wa:active { transform: translateY(1px); }
+  .btn--line { background: var(--surface); color: var(--ink); border: 1.5px solid var(--line); font-weight: 600; }
+  .btn--line:hover { border-color: var(--accent); color: var(--accent); }
+  a:focus-visible { outline: 3px solid var(--cyan-bright); outline-offset: 3px; }
+
+  .hero {
+    background: var(--pcb);
+    background-image:
+      radial-gradient(120% 80% at 78% 0%, rgba(31,180,135,.18), transparent 55%),
+      radial-gradient(90% 70% at 10% 8%, rgba(16,165,221,.20), transparent 60%);
+    color: var(--on-pcb); border-bottom: 1px solid var(--pcb-line);
+    padding-block: 1.5rem 3.25rem;
+  }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .mark {
+    display: inline-flex; align-items: baseline; gap: .12em;
+    font-family: var(--font-display); font-weight: 800; letter-spacing: -.01em;
+    text-decoration: none; padding: .32rem .9rem;
+    border: 2px solid var(--cyan-bright); border-radius: 999px;
+    background: linear-gradient(180deg, rgba(16,165,221,.14), rgba(10,20,32,.1));
+    line-height: 1;
+  }
+  .mark b {
+    font-size: 1.36rem; font-weight: 800;
+    background: linear-gradient(120deg, var(--cyan-bright), var(--trace) 70%, #bff3d9);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .mark span {
+    font-size: 1.08rem; font-weight: 700; letter-spacing: .06em;
+    color: rgba(233,242,248,.16); -webkit-text-stroke: 1.1px var(--on-pcb);
+  }
+  .topbar .vuelta {
+    font-family: var(--font-mono); font-size: .74rem; letter-spacing: .04em;
+    color: var(--on-pcb-dim); text-decoration: none;
+    border: 1px solid var(--pcb-line); border-radius: 999px; padding: .4rem .8rem;
+  }
+  .topbar .vuelta:hover { color: var(--cyan-bright); border-color: var(--cyan-bright); }
+
+  .hero-inner { margin-top: 2.75rem; max-width: 42rem; }
+  .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; letter-spacing: -.02em; }
+  .hero h1 .hl { color: var(--cyan-bright); }
+  .hero-sub { margin-top: 1rem; font-size: 1.12rem; color: #cddbe5; max-width: 36rem; }
+  .hero-cta { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+  .hero-note { font-family: var(--font-mono); font-size: .8rem; color: var(--on-pcb-dim); }
+
+  .trust {
+    margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: .55rem .5rem;
+    border-top: 1px solid var(--pcb-line); padding-top: 1.4rem; padding-left: 0;
+  }
+  .trust li {
+    list-style: none; display: inline-flex; align-items: center; gap: .45rem;
+    font-size: .88rem; color: #d5e1ea; font-weight: 500;
+    padding: .38rem .8rem; border: 1px solid var(--pcb-line); border-radius: 999px;
+  }
+  .trust li svg { width: 1rem; height: 1rem; color: var(--trace); flex: none; }
+
+  section { padding-block: 3.5rem; }
+  .sec-head { max-width: 42rem; margin-bottom: 2rem; }
+  .sec-head h2 { font-size: clamp(1.55rem, 4.4vw, 2.1rem); margin-top: .5rem; letter-spacing: -.015em; }
+  .sec-head p { margin-top: .7rem; color: var(--ink-2); }
+  .divider { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+  .grid-3 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 1.4rem; display: flex; flex-direction: column; gap: .5rem;
+  }
+  .card svg.ico { width: 1.6rem; height: 1.6rem; color: var(--accent); margin-bottom: .2rem; }
+  .card h3 { font-size: 1.1rem; }
+  .card p { color: var(--ink-2); font-size: .96rem; }
+
+  .modos { background: var(--surface-2); }
+  .modos .grid-3 { gap: 1.1rem; }
+  .modo { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 1.4rem; }
+  .modo h3 { font-size: 1.08rem; margin-bottom: .4rem; }
+  .modo p { color: var(--ink-2); font-size: .95rem; }
+  .modo .tag {
+    display: inline-block; font-family: var(--font-mono); font-size: .7rem; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--trace);
+    border: 1px solid var(--trace); border-radius: 999px; padding: .2rem .6rem; margin-bottom: .7rem;
+  }
+
+  .pasos { display: grid; gap: 1rem; grid-template-columns: 1fr; counter-reset: paso; }
+  .paso {
+    display: grid; grid-template-columns: auto 1fr; gap: 1rem 1.1rem;
+    padding: 1.35rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
+  }
+  .paso::before {
+    counter-increment: paso; content: counter(paso);
+    font-family: var(--font-mono); font-weight: 600; font-size: 1rem;
+    width: 2.1rem; height: 2.1rem; display: grid; place-items: center;
+    color: var(--pcb); background: var(--accent); border-radius: 8px;
+  }
+  .paso h3 { font-size: 1.1rem; align-self: center; }
+  .paso p { grid-column: 2; color: var(--ink-2); font-size: .97rem; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: .55rem; padding-left: 0; }
+  .chips li {
+    list-style: none; font-size: .92rem; font-weight: 500;
+    padding: .5rem .85rem; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 999px; color: var(--ink);
+  }
+
+  .closing {
+    background: var(--pcb);
+    background-image: radial-gradient(80% 120% at 50% 0%, rgba(16,165,221,.22), transparent 60%);
+    color: var(--on-pcb); text-align: center; border-top: 1px solid var(--pcb-line);
+  }
+  .closing h2 { font-size: clamp(1.6rem, 5vw, 2.3rem); }
+  .closing p { margin: .8rem auto 0; color: #cddbe5; max-width: 32rem; }
+  .closing .btn--wa { margin-top: 1.6rem; }
+  .closing .phone { margin-top: 1.1rem; font-family: var(--font-mono); font-size: .95rem; color: var(--on-pcb-dim); }
+
+  footer { background: var(--pcb-2); color: var(--on-pcb-dim); border-top: 1px solid var(--pcb-line); }
+  footer .wrap { padding-block: 2.5rem 4.5rem; display: grid; gap: 1.5rem; }
+  .foot-brand { color: var(--on-pcb); font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+  .foot-cols { display: grid; gap: 1.4rem; grid-template-columns: 1fr; font-size: .92rem; line-height: 1.9; }
+  .foot-cols b { color: var(--on-pcb); font-weight: 600; display: block; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .3rem; }
+  .legal { font-size: .8rem; color: #5c7183; }
+
+  .dock {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    backdrop-filter: blur(10px); border-top: 1px solid var(--line); display: flex;
+  }
+  .dock .btn { flex: 1; }
+  body { padding-bottom: 4.75rem; }
+  @media (min-width: 720px) {
+    .dock { display: none; }
+    body { padding-bottom: 0; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .pasos { grid-template-columns: repeat(3, 1fr); }
+    .paso { grid-template-columns: 1fr; }
+    .paso p { grid-column: 1; }
+    .foot-cols { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="mark" href="#top" aria-label="ChipZone Empresas, inicio"><b>CHIP</b><span>ZONE</span></a>
+      <a class="vuelta" href="./">¿Sos particular? Ver servicio a domicilio &rarr;</a>
+    </div>
+
+    <div class="hero-inner" id="top">
+      <p class="eyebrow">Empresas · 14 años de experiencia</p>
+      <h1>Servicio informático para <span class="hl">empresas y oficinas</span> de la Ciudad</h1>
+      <p class="hero-sub">Atendemos el parque de equipos de PyMEs, estudios, consultorios y comercios de CABA: computadoras, redes y conectividad. Trato directo con el técnico, sin intermediarios.</p>
+
+      <div class="hero-cta">
+        <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%2C%20escribo%20por%20el%20servicio%20para%20empresas.%20Somos%20___%20y%20tenemos%20___%20equipos." rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+          Pedir una visita
+        </a>
+        <span class="hero-note">Relevamiento sin cargo</span>
+      </div>
+    </div>
+
+    <ul class="trust">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>14 años de experiencia</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Relevamiento sin cargo</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Garantía por escrito</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Atención en toda CABA</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Trato directo con el técnico</li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Qué hacemos</p>
+        <h2>El equipamiento de tu empresa, funcionando</h2>
+        <p>Trabajamos sobre el parque informático completo: los equipos de trabajo, la red que los conecta y el equipamiento que haga falta sumar o renovar.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <h3>Puestos de trabajo</h3>
+          <p>Computadoras y notebooks de la oficina: puesta a punto, ampliación de memoria, cambio a disco SSD, reinstalación y resolución de fallas de hardware.</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14 0M2 8.82a16 16 0 0 1 20 0M8.5 16.43a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+          <h3>Redes y conectividad</h3>
+          <p>Instalación y ordenamiento de redes cableadas y WiFi para oficinas. Cobertura en todo el local, puestos que se desconectan, cableado hecho un desastre.</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg>
+          <h3>Equipamiento</h3>
+          <p>Provisión, armado e instalación de equipos nuevos a medida de lo que necesita cada puesto. Sin pagar de más por prestaciones que no se van a usar.</p>
+        </article>
+      </div>
+
+      <div style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.9rem">También resolvemos</p>
+        <ul class="chips">
+          <li>Recuperación de información</li>
+          <li>Resguardo de archivos</li>
+          <li>Equipos que no encienden</li>
+          <li>Reparación de placas</li>
+          <li>Cambio de pantalla y teclado</li>
+          <li>Limpieza y mantenimiento de equipos</li>
+          <li>Impresoras en red</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="modos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cómo contratarlo</p>
+        <h2>Dos formas de trabajar</h2>
+        <p>Según el tamaño de tu empresa y qué tan seguido necesites atención.</p>
+      </div>
+      <div class="grid-3">
+        <div class="modo">
+          <span class="tag">Por incidente</span>
+          <h3>Cuando algo falla</h3>
+          <p>Nos escribís, coordinamos la visita y lo resolvemos. Presupuesto antes de tocar nada y garantía por escrito sobre el trabajo hecho. Sin abono ni permanencia.</p>
+        </div>
+        <div class="modo">
+          <span class="tag">Por proyecto</span>
+          <h3>Una mejora puntual</h3>
+          <p>Renovar los equipos de un sector, pasar todos los puestos a SSD, rehacer la red de la oficina, armar puestos nuevos. Se cotiza cerrado antes de empezar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cómo empezamos</p>
+        <h2>Del primer mensaje a la solución</h2>
+      </div>
+      <div class="pasos">
+        <div class="paso">
+          <h3>Nos contás qué pasa</h3>
+          <p>Por WhatsApp: qué rubro, cuántos equipos y qué problema tenés. Con eso ya te damos una primera orientación.</p>
+        </div>
+        <div class="paso">
+          <h3>Vamos a ver</h3>
+          <p>Coordinamos una visita a tu oficina para revisar la situación en el lugar. El relevamiento no tiene cargo.</p>
+        </div>
+        <div class="paso">
+          <h3>Presupuesto y manos a la obra</h3>
+          <p>Te pasamos el detalle de qué hay que hacer y cuánto sale. Recién con tu aprobación empezamos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>¿Necesitás alguien que se ocupe de las computadoras?</h2>
+    <p>Contanos de qué se trata tu empresa y qué está fallando. Coordinamos una visita sin cargo.</p>
+    <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%2C%20escribo%20por%20el%20servicio%20para%20empresas.%20Somos%20___%20y%20tenemos%20___%20equipos." rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+      Coordinar una visita
+    </a>
+    <p class="phone">o al 11 3933-3526 · Lun a Vie de 10 a 18 h</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">ChipZone Empresas · Servicio informático</div>
+    <div class="foot-cols">
+      <div><b>Zona</b>Base en Balvanera, Ciudad de Buenos Aires.<br>Atención en oficinas de toda CABA.</div>
+      <div><b>Horario</b>Lunes a viernes<br>de 10 a 18 h</div>
+      <div><b>Contacto</b>WhatsApp 11 3933-3526<br>Relevamiento sin cargo</div>
+    </div>
+    <p class="legal">
+      ChipZone — Servicio informático para empresas en la Ciudad de Buenos Aires. ·
+      <a href="./" style="color:inherit">Servicio a particulares</a> ·
+      <a href="privacy.html" style="color:inherit">Política de privacidad</a>
+    </p>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%2C%20escribo%20por%20el%20servicio%20para%20empresas.%20Somos%20___%20y%20tenemos%20___%20equipos." rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 11.74c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+    Pedir una visita
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://chipzoneinformatica.com.ar/empresas.html#empresas",
+  "name": "ChipZone Empresas — Servicio informático para empresas",
+  "description": "Servicio informático para empresas, oficinas y comercios de la Ciudad de Buenos Aires: puestos de trabajo, redes y conectividad, provisión de equipamiento.",
+  "url": "https://chipzoneinformatica.com.ar/empresas.html",
+  "telephone": "+5491139333526",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Balvanera",
+    "addressRegion": "Ciudad Autónoma de Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "areaServed": { "@type": "City", "name": "Ciudad Autónoma de Buenos Aires" },
+  "audience": { "@type": "BusinessAudience", "name": "PyMEs, oficinas, estudios y comercios" },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "10:00",
+    "closes": "18:00"
+  }]
+}
+</script>
+
+</body>
+</html>
