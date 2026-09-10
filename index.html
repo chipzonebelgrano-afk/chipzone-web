@@ -11,6 +11,11 @@
 <meta property="og:description" content="Retiramos tu equipo en tu domicilio, lo reparamos y te lo devolvemos funcionando. Presupuesto sin cargo. 14 años en CABA.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chipzoneinformatica.com.ar/">
+<meta property="og:locale" content="es_AR">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="geo.region" content="AR-C">
+<meta name="geo.placename" content="Balvanera, Ciudad Autónoma de Buenos Aires">
+<meta name="author" content="ChipZone">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -308,6 +313,23 @@
     .why .grid { grid-template-columns: 1fr 1fr; gap: 1.75rem 2.5rem; }
     .foot-cols { grid-template-columns: repeat(3, 1fr); }
   }
+
+  /* ---------- faq ---------- */
+  .faq { display: grid; gap: .7rem; max-width: 46rem; }
+  .faq details {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 0 1.25rem;
+  }
+  .faq summary {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; color: var(--ink);
+    padding: 1.05rem 0; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font-family: var(--font-mono); font-size: 1.35rem; color: var(--accent); flex: none; line-height: 1; }
+  .faq details[open] summary::after { content: "\2013"; }
+  .faq details[open] summary { border-bottom: 1px solid var(--line); }
+  .faq details p { color: var(--ink-2); font-size: .97rem; padding: 1rem 0 1.2rem; margin: 0; }
 </style>
 </head>
 <body>
@@ -463,6 +485,43 @@
       </div>
     </div>
   </section>
+
+  <hr class="divider">
+
+  <section class="faq-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Preguntas frecuentes</p>
+        <h2>Antes de escribirnos</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>¿El presupuesto tiene costo?</summary>
+          <p>No. Revisamos el equipo, te informamos qué falla tiene y cuánto cuesta repararlo, sin cargo y sin compromiso. La decisión de seguir adelante es tuya.</p>
+        </details>
+        <details>
+          <summary>¿Retiran el equipo a domicilio?</summary>
+          <p>Sí. Coordinamos el retiro en tu domicilio en cualquier barrio de la Ciudad de Buenos Aires y te lo devolvemos una vez reparado. El costo del retiro y entrega se informa al coordinar. También podés acercar el equipo con turno previo.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto tarda una reparación?</summary>
+          <p>Depende de la falla. Muchos trabajos —formateo, cambio a SSD, limpieza— se entregan en el día. Las reparaciones de placa o las que requieren repuestos pueden llevar algunos días; siempre damos un plazo estimado antes de empezar.</p>
+        </details>
+        <details>
+          <summary>¿Los trabajos tienen garantía?</summary>
+          <p>Sí, todos los trabajos se entregan con garantía por escrito. Si la falla reparada reaparece dentro del plazo, la resolvemos sin cargo.</p>
+        </details>
+        <details>
+          <summary>¿Qué pasa si no conviene reparar el equipo?</summary>
+          <p>Te lo decimos con franqueza. Si el costo de la reparación no justifica seguir invirtiendo en ese equipo, te lo explicamos y te orientamos sobre las alternativas. El diagnóstico no tiene cargo.</p>
+        </details>
+        <details>
+          <summary>¿Reparan PC de escritorio y notebooks?</summary>
+          <p>Sí. Trabajamos con computadoras de escritorio, notebooks y netbooks de todas las marcas, para uso hogareño, de oficina y profesional.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 </main>
 
 <section class="closing">
@@ -481,7 +540,7 @@
   <div class="wrap">
     <div class="foot-brand">ChipZone · Servicio técnico de computadoras</div>
     <div class="foot-cols">
-      <div><b>Zona</b>Balvanera, Ciudad de Buenos Aires<br>Retiro y entrega en toda la Ciudad</div>
+      <div><b>Zona</b>Base en Balvanera, Ciudad de Buenos Aires.<br>Retiro y entrega a domicilio en Once, Congreso, Monserrat, San Cristóbal, Almagro, Boedo, Caballito, Recoleta, Palermo, Villa Crespo, San Telmo, Retiro y toda CABA.</div>
       <div><b>Horario</b>Lunes a viernes<br>de 10 a 18 h</div>
       <div><b>Contacto</b>WhatsApp 11 3933-3526<br>Presupuesto sin cargo</div>
     </div>
@@ -500,6 +559,90 @@
     WhatsApp
   </a>
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://chipzoneinformatica.com.ar/#business",
+  "name": "ChipZone — Servicio técnico de computadoras",
+  "description": "Servicio técnico de reparación de computadoras y notebooks en la Ciudad de Buenos Aires. Retiro y entrega a domicilio, presupuesto sin cargo y garantía por escrito. 14 años de experiencia.",
+  "url": "https://chipzoneinformatica.com.ar/",
+  "telephone": "+5491139333526",
+  "priceRange": "$$",
+  "currenciesAccepted": "ARS",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Balvanera",
+    "addressRegion": "Ciudad Autónoma de Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Ciudad Autónoma de Buenos Aires"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "10:00",
+    "closes": "18:00"
+  }],
+  "sameAs": [
+    "https://www.facebook.com/ChipZone/",
+    "https://www.instagram.com/chipzoneinformatica"
+  ],
+  "knowsAbout": [
+    "Reparación de notebooks",
+    "Cambio de disco a SSD",
+    "Reparación de placas de computadora",
+    "Formateo y limpieza de PC",
+    "Recuperación de datos"
+  ],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cambio de disco a SSD y reinstalación del sistema" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnóstico y reparación de placa — equipos que no encienden" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Formateo, limpieza y optimización" } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿El presupuesto tiene costo?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Revisamos el equipo, te informamos qué falla tiene y cuánto cuesta repararlo, sin cargo y sin compromiso. La decisión de seguir adelante es tuya." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Retiran el equipo a domicilio?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sí. Coordinamos el retiro en tu domicilio en cualquier barrio de la Ciudad de Buenos Aires y te lo devolvemos una vez reparado. El costo del retiro y entrega se informa al coordinar. También podés acercar el equipo con turno previo." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda una reparación?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Depende de la falla. Muchos trabajos —formateo, cambio a SSD, limpieza— se entregan en el día. Las reparaciones de placa o las que requieren repuestos pueden llevar algunos días; siempre damos un plazo estimado antes de empezar." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los trabajos tienen garantía?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sí, todos los trabajos se entregan con garantía por escrito. Si la falla reparada reaparece dentro del plazo, la resolvemos sin cargo." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si no conviene reparar el equipo?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Te lo decimos con franqueza. Si el costo de la reparación no justifica seguir invirtiendo en ese equipo, te lo explicamos y te orientamos sobre las alternativas. El diagnóstico no tiene cargo." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Reparan PC de escritorio y notebooks?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajamos con computadoras de escritorio, notebooks y netbooks de todas las marcas, para uso hogareño, de oficina y profesional." }
+    }
+  ]
+}
+</script>
 
 </body>
 </html>
