@@ -214,9 +214,85 @@ def og(w=1200, h=630):
     )
 
 
+def _envolver(d, texto, f, ancho_max):
+    """Parte el texto en líneas que entren en `ancho_max`."""
+    palabras, lineas, actual = texto.split(), [], ""
+    for p in palabras:
+        prueba = f"{actual} {p}".strip()
+        if ancho(d, prueba, f) <= ancho_max or not actual:
+            actual = prueba
+        else:
+            lineas.append(actual)
+            actual = p
+    if actual:
+        lineas.append(actual)
+    return lineas
+
+
+# Los cuatro ángulos de la campaña de Meta. Se separan a propósito: Meta
+# reparte el presupuesto hacia el que mejor responde, así que conviene que
+# sean mensajes DISTINTOS y no variantes del mismo.
+ANUNCIOS = [
+    ("general", "¿Problemas con tu PC o notebook?",
+     "La retiramos, la reparamos y te la devolvemos funcionando"),
+    ("ssd", "¿Tu compu tarda una eternidad en prender?",
+     "Con un disco SSD arranca en segundos y queda como nueva"),
+    ("lenta", "¿Lenta, con publicidad que se abre sola?",
+     "Formateo y limpieza profunda. Muchas veces, entrega en el día"),
+    ("no_enciende", "¿No prende? ¿Pantalla azul? ¿Se apaga sola?",
+     "14 años reparando placas. Te decimos si conviene arreglarla"),
+]
+
+
+def creativos(lado=1080):
+    """Imágenes cuadradas para los anuncios de Meta.
+
+    Son un punto de partida, NO lo ideal: en Meta la creatividad decide
+    gran parte del resultado y una foto real de trabajo rinde bastante más
+    que una placa de texto. Sirven para arrancar y medir mientras no haya
+    fotos.
+    """
+    rutas = []
+    for nombre, titulo, bajada in ANUNCIOS:
+        img = fondo(lado, lado).convert("RGBA")
+        d = ImageDraw.Draw(img)
+        margen = lado * 0.10
+        util = lado - margen * 2
+
+        f_tit = fuente(BOLD, int(lado * 0.082))
+        f_baj = fuente(REG, int(lado * 0.046))
+
+        lineas_tit = _envolver(d, titulo, f_tit, util)
+        lineas_baj = _envolver(d, bajada, f_baj, util)
+
+        alto = len(lineas_tit) * lado * 0.098 + lado * 0.05 + len(lineas_baj) * lado * 0.062
+        y = (lado - alto) / 2 - lado * 0.05
+
+        for ln in lineas_tit:
+            d.text(((lado - ancho(d, ln, f_tit)) / 2, y), ln, font=f_tit, fill=ON_PCB)
+            y += lado * 0.098
+        y += lado * 0.05
+        for ln in lineas_baj:
+            d.text(((lado - ancho(d, ln, f_baj)) / 2, y), ln, font=f_baj, fill=ON_PCB_DIM)
+            y += lado * 0.062
+
+        # Barra de contacto abajo, siempre en el mismo lugar en los cuatro.
+        f_wa = fuente(BOLD, int(lado * 0.052))
+        wa = "Escribinos por WhatsApp"
+        d.text(((lado - ancho(d, wa, f_wa)) / 2, lado * 0.815), wa, font=f_wa, fill=WA)
+        f_pie = fuente(SEMI, int(lado * 0.036))
+        pie = "Retiro y entrega en toda CABA  ·  Presupuesto sin cargo"
+        d.text(((lado - ancho(d, pie, f_pie)) / 2, lado * 0.885), pie, font=f_pie, fill=ON_PCB_DIM)
+
+        ruta = os.path.join(AQUI, f"anuncio_{nombre}.png")
+        img.convert("RGB").save(ruta, "PNG")
+        rutas.append(ruta)
+    return rutas
+
+
 if __name__ == "__main__":
-    for f in (perfil, portada, og):
-        ruta = f()
+    salidas = [perfil(), portada(), og()] + creativos()
+    for ruta in salidas:
         img = Image.open(ruta)
-        print(f"  {os.path.basename(ruta):12s} {img.size[0]}x{img.size[1]}  "
+        print(f"  {os.path.basename(ruta):24s} {img.size[0]}x{img.size[1]}  "
               f"{os.path.getsize(ruta) // 1024} KB")
