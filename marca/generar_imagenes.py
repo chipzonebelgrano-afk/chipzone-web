@@ -169,20 +169,34 @@ def _lamina(w, h, tam_marca, y_marca, lineas, ruta):
 def portada(w=1640, h=624):
     """Portada de la página de Facebook.
 
-    El celular recorta los costados, así que todo el texto va centrado y
-    dentro de la franja central.
+    DOS restricciones que mandan el diseño:
+
+    1. **La foto de perfil se superpone sobre el centro-abajo** de la
+       portada y tapa lo que haya ahí. Por eso TODO el texto va en la
+       mitad de arriba: nada por debajo del 50% de la altura.
+    2. El celular recorta los costados, así que todo va centrado.
+
+    Tampoco lleva el wordmark: la foto de perfil ya tiene el logo, y
+    repetirlo al lado queda redundante. La portada se usa para decir qué
+    hacés y cómo contactarte, que es lo que el logo no dice.
     """
-    return _lamina(
-        w, h, tam_marca=int(h * 0.20), y_marca=h * 0.15,
-        lineas=[
-            ("Servicio técnico de PC y notebooks", int(h * 0.072), ON_PCB, SEMI, h * 0.115),
-            ("Retiro y entrega en CABA  ·  Presupuesto sin cargo  ·  Garantía por escrito",
-             int(h * 0.048), ON_PCB_DIM, REG, h * 0.10),
-            ("WhatsApp 11 3933-3526", int(h * 0.062), WA, BOLD, h * 0.082),
-            ("chipzoneinformatica.com.ar", int(h * 0.045), CYAN, SEMI, 0),
-        ],
-        ruta=os.path.join(AQUI, "portada.png"),
-    )
+    img = fondo(w, h).convert("RGBA")
+    d = ImageDraw.Draw(img)
+
+    lineas = [
+        ("Servicio técnico de PC y notebooks", int(h * 0.095), ON_PCB, BOLD, 0.155),
+        ("Retiro y entrega a domicilio en toda CABA", int(h * 0.055), ON_PCB_DIM, REG, 0.285),
+        ("14 años  ·  Presupuesto sin cargo  ·  Garantía por escrito",
+         int(h * 0.046), ON_PCB_DIM, REG, 0.375),
+        ("WhatsApp 11 3933-3526", int(h * 0.068), WA, BOLD, 0.455),
+    ]
+    for texto, tam, color, ruta_fuente, y_rel in lineas:
+        f = fuente(ruta_fuente, tam)
+        d.text(((w - ancho(d, texto, f)) / 2, h * y_rel), texto, font=f, fill=color)
+
+    ruta = os.path.join(AQUI, "portada.png")
+    img.convert("RGB").save(ruta, "PNG")
+    return ruta
 
 
 def og(w=1200, h=630):
