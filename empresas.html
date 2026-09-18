@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ChipZone Empresas — Soporte Informático para PyMEs y Oficinas en CABA</title>
+<title>ChipZone Empresas — Servicio Informático para PyMEs y Oficinas en CABA</title>
 <meta name="description" content="Servicio informático para empresas, oficinas y comercios de la Ciudad de Buenos Aires. Atención de incidentes, equipos, redes y WiFi. 14 años de experiencia.">
 <meta name="theme-color" content="#0A1420">
 <link rel="canonical" href="https://chipzoneinformatica.com.ar/empresas.html">
+<link rel="icon" type="image/png" href="marca/perfil.png">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="geo.region" content="AR-C">
 <meta name="geo.placename" content="Balvanera, Ciudad Autónoma de Buenos Aires">
-<meta property="og:title" content="ChipZone Empresas — Soporte informático para PyMEs en CABA">
+<meta property="og:title" content="ChipZone Empresas — Servicio informático para PyMEs en CABA">
 <meta property="og:description" content="Atendemos el parque informático de tu empresa: equipos, redes y WiFi. Trato directo con el técnico. 14 años en la Ciudad de Buenos Aires.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chipzoneinformatica.com.ar/empresas.html">
@@ -43,6 +44,9 @@
     --ink-2: #4C5E6E;
     --line: #DCE6EC;
     --accent: var(--cyan);
+    --accent-ink: #07698F;   /* cian para texto sobre claro (5.4:1+) */
+    --price-ink: #117A5B;
+    --pcb-line-2: rgba(233,242,248,.22);
 
     --maxw: 62rem;
     --r: 14px;
@@ -53,12 +57,12 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg: #081019; --surface: #0E1E30; --surface-2: #122840;
-      --ink: #E7EFF5; --ink-2: #9BB0C0; --line: #1E3346; --accent: var(--cyan-bright);
+      --ink: #E7EFF5; --ink-2: #9BB0C0; --line: #1E3346; --accent: var(--cyan-bright); --accent-ink: var(--cyan-bright); --price-ink: var(--trace);
     }
   }
   :root[data-theme="dark"] {
     --bg: #081019; --surface: #0E1E30; --surface-2: #122840;
-    --ink: #E7EFF5; --ink-2: #9BB0C0; --line: #1E3346; --accent: var(--cyan-bright);
+    --ink: #E7EFF5; --ink-2: #9BB0C0; --line: #1E3346; --accent: var(--cyan-bright); --accent-ink: var(--cyan-bright); --price-ink: var(--trace);
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -76,8 +80,9 @@
   .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 1.25rem; }
   .eyebrow {
     font-family: var(--font-mono); font-size: .74rem; font-weight: 600;
-    letter-spacing: .13em; text-transform: uppercase; color: var(--accent);
+    letter-spacing: .13em; text-transform: uppercase; color: var(--accent-ink);
   }
+  .hero .eyebrow, .closing .eyebrow { color: var(--cyan-bright); }
 
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
@@ -90,7 +95,7 @@
   .btn--wa:hover { background: var(--wa-press); }
   .btn--wa:active { transform: translateY(1px); }
   .btn--line { background: var(--surface); color: var(--ink); border: 1.5px solid var(--line); font-weight: 600; }
-  .btn--line:hover { border-color: var(--accent); color: var(--accent); }
+  .btn--line:hover { border-color: var(--accent); color: var(--accent-ink); }
   a:focus-visible { outline: 3px solid var(--cyan-bright); outline-offset: 3px; }
 
   .hero {
@@ -112,35 +117,36 @@
   }
   .mark b {
     font-size: 1.36rem; font-weight: 800;
-    background: linear-gradient(120deg, var(--cyan-bright), var(--trace) 70%, #bff3d9);
+    background: linear-gradient(120deg, var(--cyan-bright), var(--trace) 62%, #72D9B2);
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   .mark span {
-    font-size: 1.08rem; font-weight: 700; letter-spacing: .06em;
-    color: rgba(233,242,248,.16); -webkit-text-stroke: 1.1px var(--on-pcb);
+    font-size: 1.36rem; font-weight: 800; letter-spacing: -.01em;
+    color: var(--on-pcb);
   }
   .topbar .vuelta {
     font-family: var(--font-mono); font-size: .74rem; letter-spacing: .04em;
     color: var(--on-pcb-dim); text-decoration: none;
-    border: 1px solid var(--pcb-line); border-radius: 999px; padding: .4rem .8rem;
+    border: 1px solid var(--pcb-line-2); border-radius: 999px; padding: .4rem .8rem;
   }
   .topbar .vuelta:hover { color: var(--cyan-bright); border-color: var(--cyan-bright); }
 
-  .hero-inner { margin-top: 2.75rem; max-width: 42rem; }
+  .hero-inner { margin-top: 2.25rem; max-width: 42rem; }
   .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; letter-spacing: -.02em; }
   .hero h1 .hl { color: var(--cyan-bright); }
   .hero-sub { margin-top: 1rem; font-size: 1.12rem; color: #cddbe5; max-width: 36rem; }
-  .hero-cta { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+  .hero-cta { margin-top: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; gap: .65rem; }
+  .hero-cta .btn--wa { width: 100%; max-width: 24rem; }
   .hero-note { font-family: var(--font-mono); font-size: .8rem; color: var(--on-pcb-dim); }
 
   .trust {
-    margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: .55rem .5rem;
-    border-top: 1px solid var(--pcb-line); padding-top: 1.4rem; padding-left: 0;
+    margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: .45rem .4rem;
+    border-top: 1px solid var(--pcb-line); padding-top: 1.1rem; padding-left: 0;
   }
   .trust li {
-    list-style: none; display: inline-flex; align-items: center; gap: .45rem;
-    font-size: .88rem; color: #d5e1ea; font-weight: 500;
-    padding: .38rem .8rem; border: 1px solid var(--pcb-line); border-radius: 999px;
+    list-style: none; display: inline-flex; align-items: center; gap: .4rem;
+    font-size: .84rem; color: #d5e1ea; font-weight: 500;
+    padding: .32rem .7rem; border: 1px solid var(--pcb-line-2); border-radius: 999px;
   }
   .trust li svg { width: 1rem; height: 1rem; color: var(--trace); flex: none; }
 
@@ -155,7 +161,7 @@
     background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
     padding: 1.4rem; display: flex; flex-direction: column; gap: .5rem;
   }
-  .card svg.ico { width: 1.6rem; height: 1.6rem; color: var(--accent); margin-bottom: .2rem; }
+  .card svg.ico { width: 1.6rem; height: 1.6rem; color: var(--accent-ink); margin-bottom: .2rem; }
   .card h3 { font-size: 1.1rem; }
   .card p { color: var(--ink-2); font-size: .96rem; }
 
@@ -166,8 +172,8 @@
   .modo p { color: var(--ink-2); font-size: .95rem; }
   .modo .tag {
     display: inline-block; font-family: var(--font-mono); font-size: .7rem; font-weight: 600;
-    letter-spacing: .08em; text-transform: uppercase; color: var(--trace);
-    border: 1px solid var(--trace); border-radius: 999px; padding: .2rem .6rem; margin-bottom: .7rem;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--price-ink);
+    border: 1px solid var(--price-ink); border-radius: 999px; padding: .2rem .6rem; margin-bottom: .7rem;
   }
 
   .pasos { display: grid; gap: 1rem; grid-template-columns: 1fr; counter-reset: paso; }
@@ -206,7 +212,11 @@
   .foot-brand { color: var(--on-pcb); font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
   .foot-cols { display: grid; gap: 1.4rem; grid-template-columns: 1fr; font-size: .92rem; line-height: 1.9; }
   .foot-cols b { color: var(--on-pcb); font-weight: 600; display: block; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .3rem; }
-  .legal { font-size: .8rem; color: #5c7183; }
+  .legal { font-size: .8rem; color: #8196A8; }
+  .legal a { display: inline-block; padding: .55rem .15rem; margin: -.55rem -.15rem; }
+  .foot-cols a { display: inline-block; padding: .45rem 0; margin: -.45rem 0; }
+  .closing a.phone { display: inline-block; text-decoration: none; padding: .6rem .8rem; margin-top: .6rem; border-radius: 999px; border: 1px solid var(--pcb-line-2); }
+  .closing a.phone:hover { color: var(--cyan-bright); border-color: var(--cyan-bright); }
 
   .dock {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
@@ -215,7 +225,10 @@
     backdrop-filter: blur(10px); border-top: 1px solid var(--line); display: flex;
   }
   .dock .btn { flex: 1; }
-  body { padding-bottom: 4.75rem; }
+  .dock { transition: transform .22s ease; }
+  .dock--oculto { transform: translateY(115%); }
+  @media (prefers-reduced-motion: reduce) { .dock { transition: none; } }
+  body { padding-bottom: calc(5.25rem + env(safe-area-inset-bottom)); }
   @media (min-width: 720px) {
     .dock { display: none; }
     body { padding-bottom: 0; }
@@ -225,6 +238,31 @@
     .paso p { grid-column: 1; }
     .foot-cols { grid-template-columns: repeat(3, 1fr); }
   }
+
+  /* ---------- celular (<= 719px) ---------- */
+  @media (max-width: 719px) {
+    section { padding-block: 2.5rem; }
+    .sec-head { margin-bottom: 1.4rem; }
+    .hero { padding-block: 1.25rem 2rem; }
+    .hero-inner { margin-top: 1.9rem; }
+    .hero .eyebrow { font-size: .7rem; letter-spacing: .1em; }
+    .hero-sub { font-size: 1.05rem; margin-top: .8rem; }
+    .hero-cta { align-items: stretch; margin-top: 1.4rem; }
+    .hero-cta .btn--wa { max-width: none; }
+    .topbar .vuelta { white-space: nowrap; font-size: .7rem; }
+    .trust { margin-top: 1.4rem; padding-top: 1rem; gap: .3rem .9rem; }
+    .trust li { border: 0; padding: .15rem 0; border-radius: 0; }
+    .card { padding: 1.15rem 1.15rem 1.2rem; gap: .45rem; }
+    .card p { font-size: .94rem; }
+    .modo { padding: 1.15rem; }
+    .paso { padding: 1.1rem 1.15rem; gap: .5rem .9rem; }
+    .paso p { grid-column: 1 / -1; font-size: .95rem; }
+    .chips { display: grid; grid-template-columns: 1fr 1fr; gap: .25rem .9rem; }
+    .chips li { background: none; border: 0; border-radius: 0; padding: .25rem 0 .25rem 1rem; font-size: .9rem; position: relative; line-height: 1.4; }
+    .chips li::before { content: ""; position: absolute; left: 0; top: .62em; width: .42rem; height: .42rem; border-radius: 50%; background: var(--price-ink); }
+    footer .wrap { padding-block: 2rem 2.5rem; }
+    .foot-cols { gap: 1rem; line-height: 1.7; }
+  }
 </style>
 </head>
 <body>
@@ -233,29 +271,27 @@
   <div class="wrap">
     <div class="topbar">
       <a class="mark" href="#top" aria-label="ChipZone Empresas, inicio"><b>CHIP</b><span>ZONE</span></a>
-      <a class="vuelta" href="./">¿Sos particular? Ver servicio a domicilio &rarr;</a>
+      <a class="vuelta" href="./">¿Sos particular? &rarr;</a>
     </div>
 
     <div class="hero-inner" id="top">
-      <p class="eyebrow">Empresas · 14 años de experiencia</p>
-      <h1>Servicio informático para <span class="hl">empresas y oficinas</span> de la Ciudad</h1>
-      <p class="hero-sub">Atendemos el parque de equipos de PyMEs, estudios, consultorios y comercios de CABA: computadoras, redes y conectividad. Trato directo con el técnico, sin intermediarios.</p>
+      <p class="eyebrow">Para empresas · 14 años de experiencia</p>
+      <h1>Servicio informático para <span class="hl">empresas y oficinas</span> de CABA</h1>
+      <p class="hero-sub">Computadoras, redes y WiFi de PyMEs, estudios, consultorios y comercios. Te atiende el técnico, sin intermediarios.</p>
 
       <div class="hero-cta">
         <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola!%20Escribo%20por%20el%20servicio%20para%20empresas." rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
           Pedir una visita
         </a>
-        <span class="hero-note">Presupuesto antes de empezar</span>
+        <span class="hero-note">Visita con cargo · presupuesto cerrado antes de empezar</span>
       </div>
     </div>
 
     <ul class="trust">
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>14 años de experiencia</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Presupuesto cerrado</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Garantía por escrito</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Atención en toda CABA</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Trato directo con el técnico</li>
     </ul>
   </div>
 </header>
@@ -356,9 +392,9 @@
     <p>Contanos de qué se trata tu empresa y qué está fallando. Coordinamos una visita para verlo en el lugar.</p>
     <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola!%20Escribo%20por%20el%20servicio%20para%20empresas." rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
-      Coordinar una visita
+      Pedir una visita
     </a>
-    <p class="phone">o al 11 3933-3526 · Lun a Vie de 10 a 18 h</p>
+    <a class="phone" href="tel:+5491139333526">o llamá al 11 3933-3526</a><p class="phone" style="margin-top:.5rem">Lun a Vie de 10 a 18 h</p>
   </div>
 </section>
 
@@ -368,7 +404,7 @@
     <div class="foot-cols">
       <div><b>Zona</b>Base en Balvanera, Ciudad de Buenos Aires.<br>Atención en oficinas de toda CABA.</div>
       <div><b>Horario</b>Lunes a viernes<br>de 10 a 18 h</div>
-      <div><b>Contacto</b>WhatsApp 11 3933-3526<br>Presupuesto antes de empezar</div>
+      <div><b>Contacto</b><a href="https://wa.me/5491139333526" rel="noopener">WhatsApp 11 3933-3526</a><br>Presupuesto antes de empezar</div>
     </div>
     <p class="legal">
       ChipZone — Servicio informático para empresas en la Ciudad de Buenos Aires. ·
@@ -380,10 +416,16 @@
 
 <div class="dock">
   <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola!%20Escribo%20por%20el%20servicio%20para%20empresas." rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 11.74c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
     Pedir una visita
   </a>
 </div>
+<script>
+/* El dock de WhatsApp se esconde mientras el botón del hero está a la vista (sin JS queda fijo, como antes) */
+(function(){var d=document.querySelector('.dock'),c=document.querySelector('.hero .btn--wa');
+if(!d||!c||!('IntersectionObserver' in window))return;
+new IntersectionObserver(function(e){d.classList.toggle('dock--oculto',e[0].isIntersecting)},{threshold:0}).observe(c);})();
+</script>
 
 <script type="application/ld+json">
 {
