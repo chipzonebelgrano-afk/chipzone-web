@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1080" height="1080" role="img" aria-label="ChipZone">
+  <defs>
+    <!-- Fondo: Navy Núcleo con un radial muy leve (profundidad de pantalla) -->
+    <radialGradient id="fondo" cx="50%" cy="46%" r="62%">
+      <stop offset="0" stop-color="#14264F"/>
+      <stop offset="1" stop-color="#0B1530"/>
+    </radialGradient>
+    <!-- Perforación de las vías (agujero real, funciona sobre cualquier fondo) -->
+    <mask id="vias" maskUnits="userSpaceOnUse" x="-70" y="-70" width="140" height="140">
+      <rect x="-70" y="-70" width="140" height="140" fill="#fff"/>
+      <circle cx="-36" cy="-36" r="8" fill="#000"/>
+      <circle cx="36" cy="36" r="8" fill="#000"/>
+    </mask>
+  </defs>
+
+  <!-- Fondo a sangre: el recorte circular lo aplica la plataforma -->
+  <rect width="512" height="512" fill="url(#fondo)"/>
+
+  <!-- Isotipo. Grilla propia centrada en 0,0.
+       translate x=270 (no 256): corrección óptica de +14 px por la apertura de la C.
+       scale 1.16: el símbolo ocupa el 57 % del ancho y queda dentro del 70 % central. -->
+  <g transform="translate(270 256) scale(1.16)">
+
+    <!-- Pines: 3 por lado en tres lados (el derecho queda libre) -->
+    <g fill="#FFFFFF">
+      <rect x="-54" y="-138" width="20" height="28" rx="4"/>
+      <rect x="-10" y="-138" width="20" height="28" rx="4"/>
+      <rect x="34"  y="-138" width="20" height="28" rx="4"/>
+      <rect x="-54" y="110"  width="20" height="28" rx="4"/>
+      <rect x="-10" y="110"  width="20" height="28" rx="4"/>
+      <rect x="34"  y="110"  width="20" height="28" rx="4"/>
+      <rect x="-138" y="-54" width="28" height="20" rx="4"/>
+      <rect x="-138" y="-10" width="28" height="20" rx="4"/>
+      <rect x="-138" y="34"  width="28" height="20" rx="4"/>
+    </g>
+
+    <!-- Cuerpo del chip = letra C (abierta a la derecha, corte recto) -->
+    <path d="M96 -40 V-56 A40 40 0 0 0 56 -96 H-56 A40 40 0 0 0 -96 -56 V56 A40 40 0 0 0 -56 96 H56 A40 40 0 0 0 96 56 V40"
+          fill="none" stroke="#FFFFFF" stroke-width="36"/>
+
+    <!-- Pista Z con quiebre a 45° + dos vías -->
+    <g mask="url(#vias)" fill="#00C8FF" stroke="#00C8FF">
+      <path d="M-36 -36 H36 L-36 36 H36" fill="none" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="-36" cy="-36" r="20" stroke="none"/>
+      <circle cx="36" cy="36" r="20" stroke="none"/>
+    </g>
+  </g>
+</svg>

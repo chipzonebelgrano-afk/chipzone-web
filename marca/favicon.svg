@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Ícono ChipZone, versión micro (sin pines ni vías) para la pestaña del navegador -->
+  <rect width="512" height="512" rx="112" fill="#0B1530"/>
+  <g transform="translate(264 256) scale(1.45)">
+    <path d="M92 -36 V-48 A44 44 0 0 0 48 -92 H-48 A44 44 0 0 0 -92 -48 V48 A44 44 0 0 0 -48 92 H48 A44 44 0 0 0 92 48 V36" fill="none" stroke="#FFFFFF" stroke-width="44"/>
+    <path d="M-30 -30 H30 L-30 30 H30" fill="none" stroke="#00C8FF" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

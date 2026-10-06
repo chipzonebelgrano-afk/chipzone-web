@@ -7,7 +7,9 @@
 <meta name="description" content="Servicio informático para empresas, oficinas y comercios de la Ciudad de Buenos Aires. Atención de incidentes, equipos, redes y WiFi. 14 años de experiencia.">
 <meta name="theme-color" content="#0A1420">
 <link rel="canonical" href="https://chipzoneinformatica.com.ar/empresas.html">
+<link rel="icon" type="image/svg+xml" href="marca/favicon.svg">
 <link rel="icon" type="image/png" href="marca/perfil.png">
+<link rel="apple-touch-icon" href="marca/perfil.png">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="geo.region" content="AR-C">
 <meta name="geo.placename" content="Balvanera, Ciudad Autónoma de Buenos Aires">
@@ -107,23 +109,15 @@
     padding-block: 1.5rem 3.25rem;
   }
   .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  /* logo ChipZone (6/10/2026): isotipo chip C+Z + palabra, la misma que lo impreso */
   .mark {
-    display: inline-flex; align-items: baseline; gap: .12em;
-    font-family: var(--font-display); font-weight: 800; letter-spacing: -.01em;
-    text-decoration: none; padding: .32rem .9rem;
-    border: 2px solid var(--cyan-bright); border-radius: 999px;
-    background: linear-gradient(180deg, rgba(16,165,221,.14), rgba(10,20,32,.1));
-    line-height: 1;
+    display: inline-flex; align-items: center; gap: .55rem;
+    font-family: var(--font-display); font-weight: 800; letter-spacing: -.02em;
+    text-decoration: none; line-height: 1; color: #fff;
   }
-  .mark b {
-    font-size: 1.36rem; font-weight: 800;
-    background: linear-gradient(120deg, var(--cyan-bright), var(--trace) 62%, #72D9B2);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .mark span {
-    font-size: 1.36rem; font-weight: 800; letter-spacing: -.01em;
-    color: var(--on-pcb);
-  }
+  .mark-iso { height: 2.15rem; width: auto; flex: none; display: block; }
+  .mark b { font-size: 1.5rem; font-weight: 800; color: #fff; }
+  .mark b span { color: #00C8FF; }
   .topbar .vuelta {
     font-family: var(--font-mono); font-size: .74rem; letter-spacing: .04em;
     color: var(--on-pcb-dim); text-decoration: none;
@@ -270,7 +264,7 @@
 <header class="hero">
   <div class="wrap">
     <div class="topbar">
-      <a class="mark" href="#top" aria-label="ChipZone Empresas, inicio"><b>CHIP</b><span>ZONE</span></a>
+      <a class="mark" href="#top" aria-label="ChipZone Empresas, inicio"><svg class="mark-iso" viewBox="-138 -138 252 276" aria-hidden="true" focusable="false"><defs><mask id="mark-vias" maskUnits="userSpaceOnUse" x="-70" y="-70" width="140" height="140"><rect x="-70" y="-70" width="140" height="140" fill="#fff"/><circle cx="-36" cy="-36" r="8" fill="#000"/><circle cx="36" cy="36" r="8" fill="#000"/></mask></defs><g fill="#fff"><rect x="-54" y="-138" width="20" height="28" rx="4"/><rect x="-10" y="-138" width="20" height="28" rx="4"/><rect x="34" y="-138" width="20" height="28" rx="4"/><rect x="-54" y="110" width="20" height="28" rx="4"/><rect x="-10" y="110" width="20" height="28" rx="4"/><rect x="34" y="110" width="20" height="28" rx="4"/><rect x="-138" y="-54" width="28" height="20" rx="4"/><rect x="-138" y="-10" width="28" height="20" rx="4"/><rect x="-138" y="34" width="28" height="20" rx="4"/></g><path d="M96 -40 V-56 A40 40 0 0 0 56 -96 H-56 A40 40 0 0 0 -96 -56 V56 A40 40 0 0 0 -56 96 H56 A40 40 0 0 0 96 56 V40" fill="none" stroke="#fff" stroke-width="36"/><g mask="url(#mark-vias)" fill="#00C8FF"><path d="M-36 -36 H36 L-36 36 H36" fill="none" stroke="#00C8FF" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><circle cx="-36" cy="-36" r="20"/><circle cx="36" cy="36" r="20"/></g></svg><b>Chip<span>Zone</span></b></a>
       <a class="vuelta" href="./">¿Sos particular? &rarr;</a>
     </div>
 
