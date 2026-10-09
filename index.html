@@ -242,6 +242,11 @@
   .stars .glyphs { color: var(--star); font-size: 1.1rem; letter-spacing: .05em; -webkit-text-stroke: .6px var(--star-stroke); }
   .reviews .meta { font-size: .92rem; color: var(--ink-2); }
 
+  .quotes { margin-top: 1rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+  .quote { margin: 0; padding: 1.2rem 1.3rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); display: flex; flex-direction: column; gap: .55rem; }
+  .quote .glyphs { color: var(--star); font-size: .95rem; letter-spacing: .05em; -webkit-text-stroke: .6px var(--star-stroke); }
+  .quote blockquote { margin: 0; font-size: .95rem; line-height: 1.55; flex: 1; }
+  .quote figcaption { font-family: var(--font-mono); font-size: .75rem; color: var(--ink-2); }
   /* pasos */
   .steps { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); counter-reset: step; }
   .step {
@@ -429,7 +434,7 @@
 
         <ul class="trust">
           <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Si no tiene arreglo, no pagás nada</li>
-          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Garantía por escrito</li>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Garantía por escrito de 30 días</li>
           <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Se paga al retirar el equipo</li>
         </ul>
       </div>
@@ -440,7 +445,7 @@
           <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Diagnóstico sin cargo en el local</li>
           <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Presupuesto por WhatsApp antes de tocar nada</li>
           <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Si no tiene arreglo, no pagás la reparación</li>
-          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Garantía por escrito</li>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Garantía por escrito de 30 días</li>
           <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Se paga al retirar el equipo</li>
         </ul>
         <p>El presupuesto se arma según el modelo y la falla, y te lo pasamos por WhatsApp antes de tocar nada. Si usás el retiro en moto, el viaje se cobra aparte y te lo informamos antes de ir.</p>
@@ -461,6 +466,11 @@
           </div>
         </div>
         <a class="btn btn--line" href="https://maps.app.goo.gl/ZyZ62FHRqWuNeoZs6" target="_blank" rel="noopener">Ver todas en Google</a>
+      </div>
+      <div class="quotes">
+        <figure class="quote"><div class="glyphs" aria-label="5 estrellas">★★★★★</div><blockquote>“Que tipo tan agradable loco! Se tomo el tiempo de explicarme lo que estaba funcionando mal, el laburo impecable. Siempre atento a todo. Ya lo recomendé con mis compañeros de laburo.”</blockquote><figcaption>Diego M. · Opinión en Google</figcaption></figure>
+        <figure class="quote"><div class="glyphs" aria-label="5 estrellas">★★★★★</div><blockquote>“Lleve mi notebook para reparación y quedó genial, buen precio y cumplió con el plazo de entrega acordado. Super recomendable”</blockquote><figcaption>Estefania A. · Opinión en Google</figcaption></figure>
+        <figure class="quote"><div class="glyphs" aria-label="5 estrellas">★★★★★</div><blockquote>“Excelente servicio! Mande mi notebook y la dejo como nueva! Ya se hizo mi lugar de confianza”</blockquote><figcaption>Lautaro A. · Opinión en Google</figcaption></figure>
       </div>
     </div>
   </section>
@@ -486,7 +496,7 @@
         </div>
         <div class="step">
           <h3>Lo retirás probado</h3>
-          <p>Pagás al retirar, en efectivo o transferencia, y te llevás la garantía por escrito.</p>
+          <p>Pagás al retirar, en efectivo o transferencia, y te llevás la garantía por escrito de 30 días.</p>
         </div>
       </div>
     </div>
@@ -521,8 +531,8 @@
           <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web%2C%20tengo%20las%20bisagras%20rotas." target="_blank" rel="noopener" aria-label="Consultar por las bisagras">Consultar</a>
         </div>
         <div class="svc">
-          <div><h3><a href="pantalla-y-teclado-notebook.html">Pantalla o teclado</a></h3><p>Cambio de pantalla o teclado según el modelo.</p></div>
-          <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Tengo%20un%20problema%20con%20la%20pantalla%20o%20el%20teclado." target="_blank" rel="noopener" aria-label="Consultar por pantalla o teclado">Consultar</a>
+          <div><h3><a href="pantalla-y-teclado-notebook.html">Pantalla, teclado o batería</a></h3><p>Cambio de pantalla, teclado o batería según el modelo.</p></div>
+          <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Tengo%20un%20problema%20con%20la%20pantalla%2C%20el%20teclado%20o%20la%20bater%C3%ADa." target="_blank" rel="noopener" aria-label="Consultar por pantalla, teclado o batería">Consultar</a>
         </div>
         <p class="svc-more">También: ampliación de RAM, armado de PC a medida, recuperación de datos, redes y WiFi.</p>
       </div>
@@ -559,6 +569,7 @@
         <p class="intro">A pocas cuadras de Plaza Congreso. Escribinos antes de venir y te pasamos la dirección exacta y el horario.</p>
         <ul class="datos">
           <li><b>Subte</b><span>Línea A · estaciones Congreso y Sáenz Peña</span></li>
+          <li><b>Colectivos</b><span>Líneas 12, 86, 98, 150 y 151 paran a metros</span></li>
           <li><b>Horario</b><span>Lunes a viernes de 9 a 18 h</span></li>
           <li><b>Moto</b><span>Retiro y entrega en Once, Balvanera, Monserrat, San Cristóbal, Almagro, Caballito, Recoleta, Palermo y toda CABA</span></li>
         </ul>
@@ -613,7 +624,7 @@
         </details>
         <details name="faq">
           <summary>¿Qué cubre la garantía?</summary>
-          <p>Todos los trabajos tienen garantía por escrito. Si la falla reparada reaparece dentro del plazo, la resolvemos sin cargo. No cubre golpes, líquidos ni fallas distintas a la reparada.</p>
+          <p>Todos los trabajos tienen garantía por escrito de 30 días; la reparación de placa madre, 3 meses. Si la falla reparada reaparece en ese plazo, la resolvemos sin cargo. No cubre golpes, líquidos ni fallas distintas a la reparada.</p>
         </details>
         <details name="faq">
           <summary>¿Qué pasa si no conviene reparar el equipo?</summary>
@@ -626,6 +637,10 @@
         <details name="faq">
           <summary>¿Cómo y cuándo se paga?</summary>
           <p>Al retirar el equipo reparado, en efectivo o por transferencia. Antes no pagás nada.</p>
+        </details>
+        <details name="faq">
+          <summary>¿Hacen factura?</summary>
+          <p>Sí, hacemos factura C.</p>
         </details>
         <details name="faq">
           <summary>¿Dónde están y cómo llego?</summary>
@@ -774,7 +789,7 @@ ds.forEach(function(d){d.addEventListener('toggle',function(){if(d.open)ds.forEa
       "name": "¿Qué cubre la garantía?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Todos los trabajos tienen garantía por escrito. Si la falla reparada reaparece dentro del plazo, la resolvemos sin cargo. No cubre golpes, líquidos ni fallas distintas a la reparada."
+        "text": "Todos los trabajos tienen garantía por escrito de 30 días; la reparación de placa madre, 3 meses. Si la falla reparada reaparece en ese plazo, la resolvemos sin cargo. No cubre golpes, líquidos ni fallas distintas a la reparada."
       }
     },
     {
@@ -799,6 +814,14 @@ ds.forEach(function(d){d.addEventListener('toggle',function(){if(d.open)ds.forEa
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Al retirar el equipo reparado, en efectivo o por transferencia. Antes no pagás nada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hacen factura?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, hacemos factura C."
       }
     },
     {
