@@ -142,6 +142,12 @@
   }
   .btn--line:hover { border-color: var(--accent); color: var(--accent-ink); }
   a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan-bright); outline-offset: 3px; }
+  .btn--dark { background: var(--pcb); color: var(--on-pcb); }
+  .btn--dark:hover { background: var(--pcb-2); color: var(--cyan-bright); }
+  :root[data-theme="dark"] .btn--dark { border: 1.5px solid var(--pcb-line-2); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn--dark { border: 1.5px solid var(--pcb-line-2); } }
+  .btn-row { display: flex; flex-wrap: wrap; gap: .65rem; }
+  .check { width: 1.2rem; height: 1.2rem; color: var(--trace); flex: none; }
 
   /* ---------- hero (always dark) ---------- */
   .hero {
@@ -153,8 +159,7 @@
     border-bottom: 1px solid var(--pcb-line);
     padding-block: 1.5rem 3.25rem;
   }
-  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-
+  .topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .9rem 1rem; }
   /* logo ChipZone (6/10/2026): isotipo chip C+Z + palabra, la misma que lo impreso */
   .mark {
     display: inline-flex; align-items: center; gap: .55rem;
@@ -164,6 +169,9 @@
   .mark-iso { height: 2.15rem; width: auto; flex: none; display: block; }
   .mark b { font-size: 1.5rem; font-weight: 800; color: #fff; }
   .mark b span { color: #00C8FF; }
+  .nav { display: flex; flex-wrap: wrap; align-items: center; gap: .2rem 1.1rem; font-size: .875rem; color: #cddbe5; }
+  .nav a { text-decoration: none; padding: .55rem 0; }
+  .nav a:hover { color: var(--cyan-bright); }
   .hours-pill {
     font-family: var(--font-mono); font-size: .72rem; letter-spacing: .04em;
     color: var(--on-pcb-dim); border: 1px solid var(--pcb-line-2); border-radius: 999px;
@@ -171,79 +179,74 @@
   }
   .hours-pill b { color: var(--trace); font-weight: 600; }
 
-  .hero-inner { margin-top: 2.25rem; max-width: 40rem; }
-  .hero .eyebrow { font-size: .72rem; letter-spacing: .1em; } /* entra en una línea a 390px */
-  .hero-grid { display: grid; gap: 2rem; align-items: end; }
-  @media (min-width: 900px) { .hero-grid { grid-template-columns: 1fr 21rem; gap: 3rem; } }
-
-  /* dos formas de entregar el equipo: primero "traelo" */
-  .modos-hero { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .45rem; max-width: 34rem; }
-  .modos-hero li { display: grid; grid-template-columns: auto 1fr; gap: .6rem; align-items: start; font-size: 1.08rem; color: #cddbe5; line-height: 1.45; }
-  .modos-hero li b { color: var(--on-pcb); font-weight: 600; }
-  .modos-hero li svg { width: 1.2rem; height: 1.2rem; color: var(--trace); margin-top: .22rem; flex: none; }
-
-  /* precios de referencia: a la derecha del hero en escritorio, debajo de los chips en celular */
-  .precios { background: rgba(14,30,48,.75); border: 1px solid var(--pcb-line-2); border-radius: var(--r); padding: 1.1rem 1.2rem; }
-  .precios h2 { font-family: var(--font-mono); font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--cyan-bright); margin-bottom: .6rem; }
-  .precios dl { margin: 0; display: grid; gap: .45rem; }
-  .precios div { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; font-size: .93rem; color: #d5e1ea; border-bottom: 1px dashed var(--pcb-line); padding-bottom: .4rem; }
-  .precios div:last-child { border-bottom: 0; padding-bottom: 0; }
-  .precios dt { margin: 0; }
-  .precios dd { margin: 0; font-family: var(--font-mono); font-weight: 600; color: var(--trace); white-space: nowrap; }
-  .precios p { margin-top: .7rem; font-size: .78rem; color: var(--on-pcb-dim); }
-  .hero h1 {
-    font-size: clamp(2.05rem, 6.4vw, 3.15rem);
-    font-weight: 800; letter-spacing: -.02em;
-  }
+  .hero-grid { margin-top: 2.25rem; display: grid; gap: 2rem 2.5rem; align-items: start; }
+  @media (min-width: 900px) { .hero-grid { grid-template-columns: 1fr 21rem; } .incluye { margin-top: 2.6rem; } }
+  .hero .eyebrow { font-size: .72rem; letter-spacing: .1em; color: var(--cyan-bright); } /* entra en una línea a 390px */
+  .hero h1 { margin-top: .9rem; font-size: clamp(2.05rem, 6.4vw, 3.25rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.08; }
   .hero h1 .hl { color: var(--cyan-bright); }
-  .hero-sub {
-    margin-top: 1rem; font-size: 1.12rem; color: #cddbe5; max-width: 34rem;
-  }
-  .hero-cta { margin-top: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; gap: .65rem; }
-  .hero-cta .btn--wa { width: 100%; max-width: 24rem; }
   .hero-sub { margin-top: .9rem; font-size: 1.12rem; color: #d5e1ea; max-width: 34rem; line-height: 1.5; }
+
+  .modos-hero { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .45rem; max-width: 34rem; }
+  .modos-hero li { display: grid; grid-template-columns: auto 1fr; gap: .6rem; align-items: start; font-size: 1.05rem; color: #cddbe5; line-height: 1.45; }
+  .modos-hero li b { color: var(--on-pcb); font-weight: 600; }
+  .modos-hero .check { margin-top: .18rem; }
+
+  .hero-cta { margin-top: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; gap: .7rem; }
   .sintomas-h { font-family: var(--font-mono); font-size: .76rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan-bright); margin: 0; }
   .sintomas { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; width: 100%; max-width: 30rem; }
-  .hero-cta .sintomas .btn--wa { margin: 0; width: 100%; max-width: none; height: 100%; padding: .85rem .8rem; font-size: .98rem; line-height: 1.2; text-align: center; }
-  .sintomas-otro { color: var(--on-pcb); font-size: .92rem; text-underline-offset: 3px; }
+  .sintomas .btn--wa { width: 100%; height: 100%; min-height: 3.25rem; padding: .8rem .8rem; font-size: .98rem; line-height: 1.2; text-align: center; }
+  .sintomas-otro { color: var(--on-pcb); font-size: .95rem; text-underline-offset: 3px; padding: .3rem 0; }
   .sintomas-otro:hover { color: var(--cyan-bright); }
-  .hero-note { font-family: var(--font-mono); font-size: .8rem; color: var(--on-pcb-dim); display: flex; flex-wrap: wrap; gap: .25rem .6rem; }
+  .hero-note { font-family: var(--font-mono); font-size: .8rem; color: var(--on-pcb-dim); display: flex; flex-wrap: wrap; gap: .25rem .9rem; }
   .hero-note a { color: inherit; text-decoration: none; }
   .hero-note a b { color: #FFCA3A; font-weight: 600; }
   .hero-note a:hover { color: var(--on-pcb); }
 
   .trust {
-    margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: .45rem .4rem;
-    border-top: 1px solid var(--pcb-line); padding: 1.1rem 0 0; /* padding-left 0: el ul traía 40px de sangría */
+    margin: 1.75rem 0 0; display: flex; flex-wrap: wrap; gap: .45rem .4rem;
+    border-top: 1px solid var(--pcb-line); padding: 1.1rem 0 0;
   }
   .trust li {
     list-style: none; display: inline-flex; align-items: center; gap: .4rem;
     font-size: .84rem; color: #d5e1ea; font-weight: 500;
     padding: .32rem .7rem; border: 1px solid var(--pcb-line-2); border-radius: 999px;
   }
-  .trust li svg { width: 1rem; height: 1rem; color: var(--trace); flex: none; }
-  .trust li.rating b { color: #FFCA3A; font-weight: 700; }
+  .trust .check { width: 1rem; height: 1rem; }
 
-  /* ---------- generic section ---------- */
-  section { padding-block: clamp(3rem, 4.5vw, 4rem); }
-  section:has(> .wrap > .reviews) { padding-block: 2.25rem; }
-  .sec-head { max-width: 40rem; margin-bottom: 2rem; }
-  .sec-head h2 { font-size: clamp(1.55rem, 4.4vw, 2.1rem); margin-top: .5rem; letter-spacing: -.015em; }
-  .sec-head p { margin-top: .7rem; color: var(--ink-2); }
+  /* qué incluye siempre: a la derecha del hero en escritorio, debajo en celular */
+  .incluye { background: rgba(14,30,48,.75); border: 1px solid var(--pcb-line-2); border-radius: var(--r); padding: 1.1rem 1.25rem; }
+  .incluye h2 { font-family: var(--font-mono); font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--cyan-bright); margin-bottom: .5rem; }
+  .incluye ul { list-style: none; margin: 0; padding: 0; }
+  .incluye li { display: flex; gap: .6rem; align-items: flex-start; font-size: .94rem; color: #d5e1ea; padding: .5rem 0; border-bottom: 1px dashed var(--pcb-line); line-height: 1.4; }
+  .incluye li:last-child { border-bottom: 0; }
+  .incluye .check { width: 1.05rem; height: 1.05rem; margin-top: .1rem; }
+  .incluye p { margin-top: .6rem; font-size: .8rem; color: var(--on-pcb-dim); line-height: 1.5; }
 
-  .divider {
-    position: relative; height: 1px; border: 0; margin: 0;
-    background: linear-gradient(90deg, transparent, var(--line-strong) 8%, var(--line-strong) 92%, transparent);
+  /* ---------- secciones ---------- */
+  section { padding-block: clamp(3rem, 4.5vw, 3.5rem); }
+  section + section, main > section + section { border-top: 1px solid var(--line); }
+  .sec-alt { background: var(--surface-2); }
+  .sec-head { max-width: 40rem; margin-bottom: 1.75rem; }
+  .sec-head h2, .band h2, .donde h2 { font-size: clamp(1.55rem, 4.4vw, 2.1rem); margin-top: .5rem; letter-spacing: -.015em; }
+  .sec-head p { margin-top: .6rem; color: var(--ink-2); }
+
+  /* reseñas */
+  .sec-reviews { padding-block: 2.25rem; }
+  .reviews {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 1.25rem; padding: 1.4rem 1.6rem; background: var(--surface);
+    border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow);
   }
-  .trace-rule {
-    display: block; width: 100%; height: 14px; margin: 0; color: var(--accent); opacity: .5;
-  }
+  .stars { display: flex; align-items: center; gap: .75rem; }
+  .stars .num { font-family: var(--font-display); font-weight: 800; font-size: 2.1rem; letter-spacing: -.02em; line-height: 1; }
+  .stars .glyphs { color: var(--star); font-size: 1.1rem; letter-spacing: .05em; -webkit-text-stroke: .6px var(--star-stroke); }
+  .reviews .meta { font-size: .92rem; color: var(--ink-2); }
 
-  /* ---------- steps ---------- */
-  .steps { display: grid; gap: 1rem; grid-template-columns: 1fr; counter-reset: step; }
+  /* pasos */
+  .steps { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); counter-reset: step; }
   .step {
-    display: grid; grid-template-columns: auto 1fr; gap: 1rem 1.1rem;
-    padding: 1.35rem; background: var(--surface); border: 1px solid var(--line);
+    display: flex; flex-direction: column; gap: .55rem;
+    padding: 1.3rem; background: var(--surface); border: 1px solid var(--line);
     border-radius: var(--r); box-shadow: var(--shadow);
   }
   .step::before {
@@ -252,224 +255,202 @@
     width: 2.1rem; height: 2.1rem; display: grid; place-items: center;
     color: var(--pcb); background: var(--accent); border-radius: 8px;
   }
-  .step h3 { font-size: 1.12rem; align-self: center; }
-  .step p { grid-column: 2; color: var(--ink-2); font-size: .98rem; }
+  .step h3 { font-size: 1.1rem; }
+  .step p { color: var(--ink-2); font-size: .95rem; }
 
-  /* ---------- services ---------- */
-  .svc-group + .svc-group { margin-top: 2.25rem; }
-  .svc-group > h3 {
-    font-family: var(--font-mono); font-weight: 600; font-size: .8rem; letter-spacing: .1em;
-    text-transform: uppercase; color: var(--ink-2); margin-bottom: 1rem;
-  }
-  .feature { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-  .fcard {
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
-    padding: 1.4rem; display: flex; flex-direction: column; gap: .5rem; box-shadow: var(--shadow);
-  }
-  .fcard h4 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; margin: 0; }
-  .fcard p { color: var(--ink-2); font-size: .96rem; flex: 1; }
-  .price {
-    font-family: var(--font-mono); font-weight: 600; font-size: 1rem; line-height: 1.4;
-    color: var(--price-ink); display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .5rem;
-    padding-top: .6rem; border-top: 1px dashed var(--line-strong);
-  }
-  .price small { color: var(--ink-2); font-weight: 500; font-size: .78rem; flex-basis: 100%; }
-  .btn--card { margin-top: .5rem; font-size: .95rem; padding: .7rem 1.1rem; }
+  /* servicios: una tarjeta con filas */
+  .svc-list { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); }
+  .svc { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .4rem 1.25rem; align-items: center; padding: 1.1rem 1.4rem; border-bottom: 1px solid var(--line); }
+  .svc h3 { font-size: 1.06rem; line-height: 1.25; }
+  .svc h3 a { text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: .2em; }
+  .svc h3 a:hover { color: var(--accent-ink); text-decoration-color: currentColor; }
+  .svc p { color: var(--ink-2); font-size: .9rem; line-height: 1.45; margin-top: .2rem; }
+  .svc .btn--wa { font-size: .9rem; padding: .55rem 1.05rem; min-height: 2.75rem; white-space: nowrap; }
+  .svc-more { padding: .9rem 1.4rem; font-size: .84rem; color: var(--ink-2); background: var(--surface-2); }
 
-  .chips { display: flex; flex-wrap: wrap; gap: .55rem; }
-  .chips li {
-    list-style: none; font-size: .92rem; font-weight: 500;
-    padding: .5rem .85rem; background: var(--surface); border: 1px solid var(--line);
-    border-radius: 999px; color: var(--ink);
+  /* seguimiento */
+  .seguimiento { margin-top: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--surface-2); border-radius: var(--r); }
+  .seguimiento h3 { font-size: 1.12rem; }
+  .seguimiento p { color: var(--ink-2); font-size: .94rem; }
+  .btn--line { min-height: 3rem; }
+
+  /* franja empresas */
+  .band .wrap { display: grid; gap: 1.5rem 2rem; align-items: center; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+  .band p:not(.eyebrow) { margin-top: .6rem; color: var(--ink-2); }
+
+  /* dónde estamos */
+  .donde .wrap { display: grid; gap: 1.75rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)); align-items: stretch; }
+  .donde .intro { margin-top: .7rem; color: var(--ink-2); }
+  .datos { list-style: none; padding: 0; margin: 1rem 0 1.25rem; display: grid; gap: .55rem; font-size: .95rem; }
+  .datos li { display: grid; grid-template-columns: 5.2rem 1fr; gap: .6rem; }
+  .datos b { font-family: var(--font-mono); font-weight: 600; font-size: .85rem; color: var(--accent-ink); padding-top: .1rem; }
+  .mapa { margin: 0; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); background: var(--surface); display: flex; flex-direction: column; }
+  .mapa svg { display: block; width: 100%; height: auto; flex: 1; background: var(--surface-2); }
+  .mapa figcaption { font-size: .82rem; color: var(--ink-2); padding: .7rem 1rem; border-top: 1px solid var(--line); }
+  .m-av { stroke: var(--surface); stroke-width: 12; fill: none; }
+  .m-calle { stroke: var(--surface); stroke-width: 4; fill: none; opacity: .8; }
+  .m-plaza { fill: var(--trace); opacity: .3; }
+  .m-plaza-t { font: 700 13px var(--font-display); fill: var(--price-ink); }
+  .m-t { font: 600 10.5px var(--font-mono); fill: var(--ink-2); }
+  .m-st { font: 700 12px var(--font-display); fill: var(--ink); }
+  .m-sub circle { fill: #18A8E0; stroke: var(--surface); stroke-width: 2; }
+  .m-sub text { font: 800 12px var(--font-display); fill: #fff; }
+
+  /* ---------- faq ---------- */
+  .faq-sec { padding-block: clamp(3.25rem, 6vw, 4.5rem); }
+  .faq-sec .wrap { display: grid; gap: 1.5rem 3rem; }
+  @media (min-width: 820px) { .faq-sec .wrap { grid-template-columns: 1fr 2fr; } }
+  .faq-sec h2 { font-size: clamp(2.1rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -.02em; margin-top: .5rem; }
+  .faq-sec .sec-head p { margin-top: .8rem; }
+  .faq { border-top: 2px solid var(--ink); }
+  .faq details { border-bottom: 1px solid var(--line-strong); }
+  .faq summary {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.12rem; color: var(--ink); line-height: 1.3;
+    padding: 1.1rem 0; cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
   }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font-family: var(--font-mono); font-size: 1.6rem; color: var(--accent); flex: none; line-height: 1; }
+  .faq details[open] summary::after { content: "\2013"; }
+  .faq details p { color: var(--ink-2); font-size: .98rem; padding: 0 0 1.2rem; max-width: 62ch; }
+  .faq details p a { color: var(--accent-ink); }
 
-  /* ---------- why ---------- */
-  .why { background: var(--surface-2); }
-  .why .grid { display: grid; gap: 1.1rem; grid-template-columns: 1fr; }
-  .why-item { display: grid; grid-template-columns: auto 1fr; gap: .35rem 1rem; }
-  .why-item svg { width: 1.5rem; height: 1.5rem; color: var(--accent-ink); grid-row: span 2; }
-  .why-item h3 { font-size: 1.05rem; }
-  .why-item p { color: var(--ink-2); font-size: .96rem; }
-
-  /* ---------- reviews ---------- */
-  .reviews {
-    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-    gap: 1.25rem; padding: 1.6rem; background: var(--surface);
-    border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow);
-  }
-  .stars { display: flex; align-items: center; gap: .6rem; }
-  .stars .num { font-family: var(--font-display); font-weight: 800; font-size: 2rem; letter-spacing: -.02em; }
-  .stars .glyphs { color: var(--star); font-size: 1.1rem; letter-spacing: .05em; -webkit-text-stroke: .6px var(--star-stroke); }
-  .stars .glyphs span { color: var(--star-empty); -webkit-text-stroke: 0; } /* la 5ta estrella, ahora visible */
-  .reviews .meta { font-size: .92rem; color: var(--ink-2); }
-
-  /* ---------- closing CTA (always dark) ---------- */
+  /* ---------- cierre (always dark) ---------- */
   .closing {
     background: var(--pcb);
     background-image: radial-gradient(80% 120% at 50% 0%, rgba(16,165,221,.22), transparent 60%);
     color: var(--on-pcb); text-align: center; border-top: 1px solid var(--pcb-line);
+    padding-block: 3.75rem;
   }
   .closing h2 { font-size: clamp(1.6rem, 5vw, 2.3rem); }
   .closing p { margin: .8rem auto 0; color: #cddbe5; max-width: 30rem; }
-  .closing .btn--wa { margin-top: 1.6rem; }
-  .closing .phone {
-    margin-top: 1.1rem; font-family: var(--font-mono); font-size: .95rem; color: var(--on-pcb-dim);
+  .closing .btn--wa { margin-top: 1.6rem; min-height: 3.25rem; }
+  .closing a.phone {
+    display: table; margin: 1.1rem auto 0; text-decoration: none; padding: .6rem .9rem; border-radius: 999px;
+    border: 1px solid var(--pcb-line-2); font-family: var(--font-mono); font-size: .92rem; color: var(--on-pcb-dim);
   }
+  .closing a.phone:hover { color: var(--cyan-bright); border-color: var(--cyan-bright); }
 
   /* ---------- footer ---------- */
   footer { background: var(--pcb-2); color: var(--on-pcb-dim); border-top: 1px solid var(--pcb-line); }
-  footer .wrap { padding-block: 2.5rem 4.5rem; display: grid; gap: 1.5rem; }
-  .foot-brand { color: var(--on-pcb); font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
-  .foot-cols { display: grid; gap: 1.4rem; grid-template-columns: 1fr; font-size: .92rem; line-height: 1.9; }
-  .foot-cols b { color: var(--on-pcb); font-weight: 600; display: block; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .3rem; }
-  .foot-social { display: flex; gap: .8rem; }
-  .foot-social a {
-    width: 2.75rem; height: 2.75rem; display: grid; place-items: center; /* 44px de toque */
-    border: 1px solid var(--pcb-line-2); border-radius: 10px; color: var(--on-pcb-dim);
-    transition: color .15s, border-color .15s;
-  }
-  .foot-social a:hover { color: var(--cyan-bright); border-color: var(--cyan-bright); }
-  .foot-social svg { width: 1.15rem; height: 1.15rem; }
-  .legal { font-size: .8rem; color: #8196A8; } /* 5.4:1 (antes 3.3:1) */
-  .legal a { display: inline-block; padding: .55rem .15rem; margin: -.55rem -.15rem; } /* zona de toque de 38px */
+  footer .wrap { padding-block: 2.5rem 3rem; display: grid; gap: 1.5rem; }
+  .foot-brand { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; color: var(--on-pcb-dim); font-size: .95rem; }
+  .foot-brand .mark-iso { height: 1.7rem; }
+  .foot-brand b { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: #fff; letter-spacing: -.02em; }
+  .foot-brand b span { color: #00C8FF; }
+  .foot-cols { display: grid; gap: 1.2rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); font-size: .92rem; line-height: 1.75; }
+  .foot-cols b { color: var(--on-pcb); font-family: var(--font-mono); font-weight: 600; display: block; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .3rem; }
   .foot-cols a { display: inline-block; padding: .45rem 0; margin: -.45rem 0; }
-  ul.trust, ul.chips { padding-left: 0; }
-  .closing a.phone { display: inline-block; text-decoration: none; padding: .6rem .8rem; margin-top: .6rem; border-radius: 999px; border: 1px solid var(--pcb-line-2); }
-  .closing a.phone:hover { color: var(--cyan-bright); border-color: var(--cyan-bright); }
+  .foot-links { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0; }
+  .foot-links li { list-style: none; }
+  .foot-links a {
+    display: inline-flex; align-items: center; gap: .45rem; min-height: 2.75rem; padding: .4rem .9rem; text-decoration: none;
+    border: 1px solid var(--pcb-line-2); border-radius: 999px; color: #cddbe5; font-size: .9rem;
+  }
+  .foot-links a:hover { color: var(--cyan-bright); border-color: var(--cyan-bright); }
+  .foot-links svg { width: 1.05rem; height: 1.05rem; }
+  .legal { font-size: .8rem; color: #8196A8; }
+  .legal a { color: inherit; display: inline-block; padding: .55rem .15rem; margin: -.55rem -.15rem; }
 
-  /* ---------- sticky mobile CTA ---------- */
+  /* ---------- barra fija del celular ---------- */
   .dock {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
     padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
     background: var(--bg);
-    background: color-mix(in srgb, var(--bg) 90%, transparent);
-    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
     border-top: 1px solid var(--line);
-    display: flex;
+    display: flex; gap: .6rem;
+    transition: transform .22s ease;
   }
-  .dock .btn { flex: 1; }
-  .dock { transition: transform .22s ease; }
+  .dock .btn { padding-inline: 1rem; min-height: 3rem; }
+  .dock .btn--wa { flex: 2; }
+  .dock .btn--line { flex: 1; }
   .dock--oculto { transform: translateY(115%); }
   @media (prefers-reduced-motion: reduce) { .dock { transition: none; } }
   @media (min-width: 720px) { .dock { display: none; } }
   body { padding-bottom: calc(5.25rem + env(safe-area-inset-bottom)); }
   @media (min-width: 720px) { body { padding-bottom: 0; } }
 
-  /* ---------- responsive up ---------- */
-  @media (min-width: 720px) {
-    .steps { grid-template-columns: repeat(3, 1fr); align-content: start; }
-    .step { grid-template-columns: 1fr; }
-    .step p { grid-column: 1; }
-    .feature { grid-template-columns: repeat(3, 1fr); }
-    .why .grid { grid-template-columns: 1fr 1fr; gap: 1.75rem 2.5rem; }
-    .foot-cols { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  /* ---------- faq ---------- */
-  .faq { display: grid; gap: .7rem; max-width: 46rem; }
-  .faq details {
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow);
-    padding: 0 1.25rem;
-  }
-  .faq summary {
-    font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; color: var(--ink);
-    padding: 1.05rem 0; cursor: pointer; list-style: none;
-    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; font-family: var(--font-mono); font-size: 1.35rem; color: var(--accent-ink); flex: none; line-height: 1; }
-  .faq details[open] summary::after { content: "\2013"; }
-  .faq details[open] summary { border-bottom: 1px solid var(--line); }
-  .faq details p { color: var(--ink-2); font-size: .97rem; padding: 1rem 0 1.2rem; margin: 0; max-width: 62ch; }
-  .faq details p a { color: var(--accent-ink); }
-
-  /* ---------- celular (<= 719px): compactar y subir la información útil ---------- */
+  /* ---------- celular (<= 719px) ---------- */
   @media (max-width: 719px) {
     section { padding-block: 2.5rem; }
-    .sec-head { margin-bottom: 1.4rem; }
     .hero { padding-block: 1.25rem 2rem; }
-    .hero-inner { margin-top: 1.9rem; }
-    .hero-cta { align-items: stretch; margin-top: 1.4rem; }
-    .hero-cta .btn--wa { max-width: none; }
+    .hero-grid { margin-top: 1.6rem; }
+    .hero-cta { align-items: stretch; margin-top: 1.3rem; }
     .trust { margin-top: 1.4rem; padding-top: 1rem; gap: .3rem .9rem; }
     .trust li { border: 0; padding: .15rem 0; border-radius: 0; }
-    .steps { gap: .75rem; }
-    .step { padding: 1.1rem 1.15rem; gap: .5rem .9rem; }
-    .step p { grid-column: 1 / -1; font-size: .95rem; } /* el texto usa todo el ancho, no queda al lado del número */
-    .fcard { padding: 1.15rem 1.15rem 1.2rem; gap: .45rem; }
-    .fcard h4 { font-size: 1.1rem; }
-    .fcard p { font-size: .94rem; }
-    .chips { display: grid; grid-template-columns: 1fr 1fr; gap: .25rem .9rem; }
-    .chips li { background: none; border: 0; border-radius: 0; padding: .25rem 0 .25rem 1rem; font-size: .9rem; position: relative; line-height: 1.4; }
-    .chips li::before { content: ""; position: absolute; left: 0; top: .62em; width: .42rem; height: .42rem; border-radius: 50%; background: var(--price-ink); }
-    .why .grid { gap: .9rem; }
     .reviews { padding: 1.2rem; }
     .reviews .btn { width: 100%; }
-    footer .wrap { padding-block: 2rem 2.5rem; }
-    .foot-cols { gap: 1rem; line-height: 1.7; }
+    .svc { grid-template-columns: 1fr; padding: 1rem 1.15rem; }
+    .svc .btn--wa { justify-self: start; }
+    .svc-more { padding: .85rem 1.15rem; }
+    .seguimiento .btn, .band .btn, .donde .btn { flex: 1 1 100%; }
+    .hero .eyebrow { font-size: .68rem; letter-spacing: .06em; }
   }
-  .fcard h4 a { color: inherit; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: .2em; }
-  .chips a { color: inherit; }
 </style>
 </head>
 <body>
 
-<header class="hero">
+<header class="hero" id="top">
   <div class="wrap">
     <div class="topbar">
       <a class="mark" href="#top" aria-label="ChipZone, inicio"><svg class="mark-iso" viewBox="-138 -138 252 276" aria-hidden="true" focusable="false"><defs><mask id="mark-vias" maskUnits="userSpaceOnUse" x="-70" y="-70" width="140" height="140"><rect x="-70" y="-70" width="140" height="140" fill="#fff"/><circle cx="-36" cy="-36" r="8" fill="#000"/><circle cx="36" cy="36" r="8" fill="#000"/></mask></defs><g fill="#fff"><rect x="-54" y="-138" width="20" height="28" rx="4"/><rect x="-10" y="-138" width="20" height="28" rx="4"/><rect x="34" y="-138" width="20" height="28" rx="4"/><rect x="-54" y="110" width="20" height="28" rx="4"/><rect x="-10" y="110" width="20" height="28" rx="4"/><rect x="34" y="110" width="20" height="28" rx="4"/><rect x="-138" y="-54" width="28" height="20" rx="4"/><rect x="-138" y="-10" width="28" height="20" rx="4"/><rect x="-138" y="34" width="28" height="20" rx="4"/></g><path d="M96 -40 V-56 A40 40 0 0 0 56 -96 H-56 A40 40 0 0 0 -96 -56 V56 A40 40 0 0 0 -56 96 H56 A40 40 0 0 0 96 56 V40" fill="none" stroke="#fff" stroke-width="36"/><g mask="url(#mark-vias)" fill="#00C8FF"><path d="M-36 -36 H36 L-36 36 H36" fill="none" stroke="#00C8FF" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><circle cx="-36" cy="-36" r="20"/><circle cx="36" cy="36" r="20"/></g></svg><b>Chip<span>Zone</span></b></a>
-      <span class="hours-pill">Lun a Vie <b>9–18 h</b></span>
+      <nav class="nav" aria-label="Secciones">
+        <a href="#servicios">Servicios</a>
+        <a href="#donde">Dónde estamos</a>
+        <a href="#faq">Preguntas</a>
+        <a href="empresas.html">Empresas</a>
+        <span class="hours-pill">Lun a Vie <b>9–18 h</b></span>
+      </nav>
     </div>
 
     <div class="hero-grid">
-    <div>
-    <div class="hero-inner" id="top">
-      <p class="eyebrow">Servicio técnico de notebooks · 14 años en CABA</p>
-      <h1>¿Tu notebook no prende, anda lenta <span class="hl">o se apaga sola?</span></h1>
-      <p class="hero-sub">Te digo qué tiene y cuánto sale antes de tocar nada. El diagnóstico es sin cargo y vos decidís.</p>
-      <ul class="modos-hero">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Traelo a Congreso</b> y te ahorrás el envío.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>O lo buscamos en moto</b> y te lo devolvemos: el envío va aparte y te lo pasamos antes.</span></li>
-      </ul>
-
-      <div class="hero-cta">
-        <p class="sintomas-h" id="sintomas-h">¿Qué le pasa?</p>
-        <ul class="sintomas" aria-labelledby="sintomas-h">
-          <li><a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Mi%20notebook%20no%20prende." rel="noopener">No prende</a></li>
-          <li><a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Mi%20notebook%20anda%20lenta." rel="noopener">Anda lenta</a></li>
-          <li><a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Mi%20notebook%20se%20apaga%20o%20se%20reinicia%20sola." rel="noopener">Se apaga o se reinicia</a></li>
-          <li><a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Tengo%20un%20problema%20con%20la%20pantalla%2C%20el%20teclado%20o%20las%20bisagras." rel="noopener">Pantalla, teclado o bisagra</a></li>
+      <div>
+        <p class="eyebrow">Servicio técnico de notebooks · 14 años en CABA</p>
+        <h1>¿Tu notebook no prende, anda lenta <span class="hl">o se apaga sola?</span></h1>
+        <p class="hero-sub">Te digo qué tiene y cuánto sale antes de tocar nada. El diagnóstico es sin cargo y vos decidís.</p>
+        <ul class="modos-hero">
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Traelo a Congreso</b> con turno y te ahorrás el envío.</span></li>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>O lo buscamos en moto</b> y te lo devolvemos: el envío va aparte y te lo pasamos antes.</span></li>
         </ul>
-        <a class="sintomas-otro" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20consultar%20por%20mi%20notebook." rel="noopener">Otra cosa: escribinos por WhatsApp</a>
-        <p class="hero-note"><a href="https://maps.app.goo.gl/ZyZ62FHRqWuNeoZs6" rel="noopener"><b>★ 4,8</b> en Google · más de 30 reseñas</a><span>Te contesta Joaquín, el técnico</span></p>
+
+        <div class="hero-cta">
+          <p class="sintomas-h" id="sintomas-h">¿Qué le pasa?</p>
+          <ul class="sintomas" aria-labelledby="sintomas-h">
+            <li><a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Mi%20notebook%20no%20prende." target="_blank" rel="noopener">No prende</a></li>
+            <li><a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Mi%20notebook%20anda%20lenta." target="_blank" rel="noopener">Anda lenta</a></li>
+            <li><a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Mi%20notebook%20se%20apaga%20o%20se%20reinicia%20sola." target="_blank" rel="noopener">Se apaga o se reinicia</a></li>
+            <li><a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Tengo%20un%20problema%20con%20la%20pantalla%2C%20el%20teclado%20o%20las%20bisagras." target="_blank" rel="noopener">Pantalla, teclado o bisagra</a></li>
+          </ul>
+          <a class="sintomas-otro" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20consultar%20por%20mi%20notebook." target="_blank" rel="noopener">Otra cosa: escribinos por WhatsApp</a>
+          <p class="hero-note"><a href="https://maps.app.goo.gl/ZyZ62FHRqWuNeoZs6" target="_blank" rel="noopener"><b>★ 4,8</b> en Google · más de 30 reseñas</a><span>Te contesta Joaquín, el técnico</span></p>
+        </div>
+
+        <ul class="trust">
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Si no tiene arreglo, no pagás nada</li>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Garantía por escrito</li>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Se paga al retirar el equipo</li>
+        </ul>
       </div>
-    </div>
 
-    <ul class="trust">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Si no tiene arreglo, no pagás nada</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Garantía por escrito</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Se paga al retirar el equipo</li>
-    </ul>
-    </div>
-
-    <!-- PRECIOS: cuando cambien, actualizar acá, en las tarjetas de Servicios y en la FAQ del retiro -->
-    <aside class="precios" aria-labelledby="precios-h">
-      <h2 id="precios-h">Precios de referencia</h2>
-      <dl>
-        <div><dt>Formateo y puesta a punto</dt><dd>$90.000</dd></div>
-        <div><dt>Limpieza interna y pasta térmica</dt><dd>$45.000</dd></div>
-        <div><dt>Formateo + SSD 480 GB</dt><dd>$220.000</dd></div>
-        <div><dt>Placa · no enciende</dt><dd>desde $185.000</dd></div>
-        <div><dt>Bisagras de notebook</dt><dd>$120.000</dd></div>
-      </dl>
-      <p>Sin envío si traés el equipo a Congreso; si lo buscamos en moto, el envío va aparte y te lo pasamos antes. Confirmamos el precio por WhatsApp antes de empezar.</p>
-    </aside>
+      <aside class="incluye" aria-labelledby="incluye-h">
+        <h2 id="incluye-h">Qué incluye siempre</h2>
+        <ul>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Diagnóstico sin cargo en el local</li>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Presupuesto por WhatsApp antes de tocar nada</li>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Si no tiene arreglo, no pagás la reparación</li>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Garantía por escrito</li>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Se paga al retirar el equipo</li>
+        </ul>
+        <p>El presupuesto se arma según el modelo y la falla, y te lo pasamos por WhatsApp antes de tocar nada. Si usás el retiro en moto, el viaje se cobra aparte y te lo informamos antes de ir.</p>
+      </aside>
     </div>
   </div>
 </header>
 
 <main>
-  <section>
+  <section class="sec-reviews">
     <div class="wrap">
       <div class="reviews">
         <div class="stars">
@@ -479,163 +460,180 @@
             <div class="meta">Más de 30 opiniones en Google</div>
           </div>
         </div>
-        <a class="btn btn--line" href="https://maps.app.goo.gl/ZyZ62FHRqWuNeoZs6" rel="noopener">Ver reseñas en Google</a>
+        <a class="btn btn--line" href="https://maps.app.goo.gl/ZyZ62FHRqWuNeoZs6" target="_blank" rel="noopener">Ver todas en Google</a>
       </div>
     </div>
   </section>
 
-  <hr class="divider">
   <section>
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Cómo trabajamos</p>
-        <h2>El proceso, en tres pasos</h2>
-        <p>Lo acercás vos o lo buscamos: vos elegís. Información clara desde el primer mensaje.</p>
+        <p class="eyebrow">Así trabajamos</p>
+        <h2>Cuatro pasos, sin sorpresas</h2>
       </div>
       <div class="steps">
         <div class="step">
           <h3>Escribinos por WhatsApp</h3>
-          <p>Indicanos qué equipo tenés y qué falla presenta. Te respondemos con un primer diagnóstico y los pasos a seguir.</p>
+          <p>Contanos qué equipo tenés y qué falla. Te respondemos con un primer diagnóstico y los pasos a seguir.</p>
         </div>
         <div class="step">
-          <h3>Lo acercás o lo retiramos</h3>
-          <p>Si lo traés a Congreso con turno previo, te ahorrás el envío. Si preferís, lo retiramos en moto en cualquier barrio de la Ciudad y te lo devolvemos igual: el envío va aparte y te lo pasamos antes.</p>
+          <h3>Lo traés o coordinamos la moto</h3>
+          <p>A Congreso con turno, sin envío. O lo buscamos en moto en cualquier barrio de CABA: el envío va aparte y te lo pasamos antes.</p>
         </div>
         <div class="step">
-          <h3>Te lo devolvemos funcionando</h3>
-          <p>Trabajamos con el presupuesto aprobado previamente y entregamos con garantía por escrito. La mayoría de las reparaciones se resuelven en el día.</p>
+          <h3>Diagnóstico y presupuesto</h3>
+          <p>Sin cargo y por WhatsApp, antes de tocar nada. Si no aprobás, no se hace. Si no tiene arreglo, no pagás la reparación.</p>
+        </div>
+        <div class="step">
+          <h3>Lo retirás probado</h3>
+          <p>Pagás al retirar, en efectivo o transferencia, y te llevás la garantía por escrito.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <hr class="divider">
-
-  <section class="services" id="servicios">
+  <section id="servicios">
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Servicios</p>
         <h2>Reparación de PC, notebooks y netbooks</h2>
-        <p>Diagnóstico y reparación de hardware y software para equipos de hogar, oficina y uso profesional.</p>
+        <p>Contanos el modelo y la falla y te pasamos el presupuesto por WhatsApp.</p>
       </div>
-
-      <!-- PRECIOS: actualizar acá cuando cambien -->
-      <div class="svc-group">
-        <h3>Los más solicitados</h3>
-        <div class="feature">
-          <article class="fcard">
-            <h4><a href="cambio-a-ssd.html">Cambio de disco a SSD y reinstalación</a></h4>
-            <p>Reemplazamos el disco mecánico por una unidad SSD y reinstalamos el sistema. El equipo mejora de forma notable su velocidad de arranque y de respuesta, sin necesidad de cambiarlo.</p>
-            <span class="price">desde $220.000 <small>incluye SSD de 480 GB</small></span>
-            <a class="btn btn--wa btn--card" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web%2C%20quiero%20el%20cambio%20a%20disco%20SSD." rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>Consultar por WhatsApp</a>
-          </article>
-          <article class="fcard">
-            <h4><a href="notebook-no-enciende.html">No enciende · Reparación de placa</a></h4>
-            <p>Diagnóstico a nivel componente. Equipos que no encienden, sin imagen, con apagados inesperados o pantalla azul. Evaluamos la falla y te indicamos si la reparación es conveniente.</p>
-            <span class="price">desde $185.000 <small>según la falla</small></span>
-            <a class="btn btn--wa btn--card" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web%2C%20mi%20notebook%20no%20enciende." rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>Consultar por WhatsApp</a>
-          </article>
-          <article class="fcard">
-            <h4><a href="formateo-notebook.html">Formateo, limpieza y optimización</a></h4>
-            <p>Equipos lentos, con software malicioso o publicidad no deseada. Formateo, limpieza integral del sistema y puesta a punto.</p>
-            <span class="price">$90.000 <small>formateo completo, incluye limpieza del sistema</small></span>
-            <a class="btn btn--wa btn--card" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web%2C%20quiero%20el%20formateo%20de%20%2490.000." rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>Consultar por WhatsApp</a>
-          </article>
+      <div class="svc-list">
+        <div class="svc">
+          <div><h3><a href="cambio-a-ssd.html">Cambio de disco a SSD y reinstalación</a></h3><p>Reemplazamos el disco mecánico por un SSD y reinstalamos el sistema. Arranca y responde en segundos, sin cambiar de equipo.</p></div>
+          <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web%2C%20quiero%20el%20cambio%20a%20disco%20SSD." target="_blank" rel="noopener" aria-label="Consultar por el cambio a SSD">Consultar</a>
         </div>
+        <div class="svc">
+          <div><h3><a href="notebook-no-enciende.html">No enciende · Reparación de placa</a></h3><p>Diagnóstico a nivel componente: sin imagen, apagados inesperados, pantalla azul. Te decimos si conviene repararla antes de hacer nada.</p></div>
+          <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web%2C%20mi%20notebook%20no%20enciende." target="_blank" rel="noopener" aria-label="Consultar por la reparación de placa">Consultar</a>
+        </div>
+        <div class="svc">
+          <div><h3><a href="formateo-notebook.html">Formateo, limpieza y optimización</a></h3><p>Equipos lentos, con virus o publicidad que aparece sola. Copia de todo el disco antes de formatear.</p></div>
+          <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web%2C%20quiero%20un%20formateo." target="_blank" rel="noopener" aria-label="Consultar por el formateo">Consultar</a>
+        </div>
+        <div class="svc">
+          <div><h3>Limpieza interna y pasta térmica</h3><p>Para equipos que calientan, hacen ruido o se apagan con el uso.</p></div>
+          <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web%2C%20quiero%20la%20limpieza%20interna." target="_blank" rel="noopener" aria-label="Consultar por la limpieza interna">Consultar</a>
+        </div>
+        <div class="svc">
+          <div><h3><a href="bisagras-notebook.html">Bisagras de notebook</a></h3><p>Tapa floja, que cruje o se despegó de la base. Reparamos antes de que dañe la pantalla.</p></div>
+          <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web%2C%20tengo%20las%20bisagras%20rotas." target="_blank" rel="noopener" aria-label="Consultar por las bisagras">Consultar</a>
+        </div>
+        <div class="svc">
+          <div><h3><a href="pantalla-y-teclado-notebook.html">Pantalla o teclado</a></h3><p>Cambio de pantalla o teclado según el modelo.</p></div>
+          <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Tengo%20un%20problema%20con%20la%20pantalla%20o%20el%20teclado." target="_blank" rel="noopener" aria-label="Consultar por pantalla o teclado">Consultar</a>
+        </div>
+        <p class="svc-more">También: ampliación de RAM, armado de PC a medida, recuperación de datos, redes y WiFi.</p>
       </div>
 
-      <div class="svc-group">
-        <h3>También realizamos</h3>
-        <ul class="chips">
-          <li>Ampliación de memoria RAM</li>
-          <li><a href="pantalla-y-teclado-notebook.html">Cambio de pantalla de notebook</a></li>
-          <li><a href="pantalla-y-teclado-notebook.html">Cambio de teclado</a></li>
-          <li><a href="bisagras-notebook.html">Reparación de bisagras de notebook</a></li>
-          <li>Armado de PC a medida</li>
-          <li>Recuperación de datos</li>
-          <li>Instalación de redes y WiFi</li>
-          <li>Limpieza interna y cambio de pasta térmica</li>
+      <div class="seguimiento">
+        <div>
+          <h3>¿Ya dejaste tu equipo?</h3>
+          <p>Consultá en qué estado está tu reparación.</p>
+        </div>
+        <a class="btn btn--line" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20saber%20el%20estado%20de%20mi%20equipo%2C%20orden%20N.%C2%BA%20___" target="_blank" rel="noopener">Consultar estado</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band sec-alt">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Para empresas</p>
+        <h2>¿Tenés un estudio, comercio u oficina?</h2>
+        <p>Puestos de trabajo, redes y WiFi, equipamiento nuevo. Visita en el lugar con costo y presupuesto cerrado antes de empezar.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--dark" href="empresas.html">Ver servicio para empresas</a>
+        <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Escribo%20por%20el%20servicio%20para%20empresas." target="_blank" rel="noopener">WhatsApp empresas</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="donde" id="donde">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Dónde estamos</p>
+        <h2>En Congreso. Atendemos con turno.</h2>
+        <p class="intro">A pocas cuadras de Plaza Congreso. Escribinos antes de venir y te pasamos la dirección exacta y el horario.</p>
+        <ul class="datos">
+          <li><b>Subte</b><span>Línea A · estaciones Congreso y Sáenz Peña</span></li>
+          <li><b>Horario</b><span>Lunes a viernes de 9 a 18 h</span></li>
+          <li><b>Moto</b><span>Retiro y entrega en Once, Balvanera, Monserrat, San Cristóbal, Almagro, Caballito, Recoleta, Palermo y toda CABA</span></li>
         </ul>
+        <div class="btn-row">
+          <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20pedir%20turno%20para%20llevar%20mi%20equipo%20a%20Congreso." target="_blank" rel="noopener">Pedir turno y dirección</a>
+          <a class="btn btn--line" href="https://maps.app.goo.gl/ZyZ62FHRqWuNeoZs6" target="_blank" rel="noopener">Ver en Google Maps</a>
+        </div>
       </div>
+      <!-- croquis de la zona de Plaza Congreso, sin marcar el local -->
+      <figure class="mapa">
+        <svg viewBox="0 0 400 300" role="img" aria-labelledby="mapa-t">
+          <title id="mapa-t">Croquis de la zona: Plaza Congreso, avenidas Rivadavia, Callao, Entre Ríos y de Mayo, y las estaciones Congreso y Sáenz Peña de la línea A</title>
+          <rect class="m-plaza" x="150" y="128" width="150" height="54" rx="6"/>
+          <text class="m-plaza-t" x="225" y="160" text-anchor="middle">Plaza Congreso</text>
+          <path class="m-av" d="M0 118 H400"/><path class="m-av" d="M0 192 H400"/>
+          <path class="m-av" d="M140 0 V300"/><path class="m-av" d="M300 155 H400"/>
+          <path class="m-calle" d="M220 0 V118 M300 0 V118 M60 0 V300 M220 192 V300 M300 192 V300 M0 40 H400 M0 260 H400"/>
+          <text class="m-t" x="8" y="111">Av. Rivadavia</text>
+          <text class="m-t" x="8" y="210">H. Yrigoyen</text>
+          <text class="m-t" x="148" y="24">Av. Callao</text>
+          <text class="m-t" x="148" y="290">Av. Entre Ríos</text>
+          <text class="m-t" x="306" y="176">Av. de Mayo</text>
+          <g class="m-sub"><circle cx="140" cy="118" r="11"/><text x="140" y="122" text-anchor="middle">A</text></g>
+          <text class="m-st" x="88" y="98">Congreso</text>
+          <g class="m-sub"><circle cx="372" cy="155" r="11"/><text x="372" y="159" text-anchor="middle">A</text></g>
+          <text class="m-st" x="392" y="138" text-anchor="end">Sáenz Peña</text>
+        </svg>
+        <figcaption>Croquis de la zona. La dirección exacta te la pasamos al pedir turno.</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="why">
+  <section class="faq-sec sec-alt" id="faq">
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Por qué elegirnos</p>
-        <h2>Trato directo y transparente</h2>
-      </div>
-      <div class="grid">
-        <div class="why-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <h3>Atención directa con el técnico</h3>
-          <p>Te atiende la persona que va a reparar tu equipo. Sin call center ni intermediarios.</p>
-        </div>
-        <div class="why-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/></svg>
-          <h3>Garantía por escrito</h3>
-          <p>Todos los trabajos se entregan con garantía. Si la falla reaparece, la resolvemos.</p>
-        </div>
-        <div class="why-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          <h3>Presupuesto sin cargo</h3>
-          <p>Revisamos el equipo y te informamos la falla y el costo de la reparación. La decisión es tuya, sin compromiso.</p>
-        </div>
-        <div class="why-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/></svg>
-          <h3>14 años de experiencia</h3>
-          <p>14 años reparando notebooks y computadoras en la Ciudad. Conocemos las fallas habituales de cada modelo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-
-  <section class="faq-sec">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Preguntas frecuentes</p>
-        <h2>Antes de escribirnos</h2>
+        <p class="eyebrow">Antes de escribirnos</p>
+        <h2>Preguntas frecuentes</h2>
+        <p>Si tu duda no está acá, escribinos y te contesta Joaquín.</p>
       </div>
       <div class="faq">
-        <details>
+        <details name="faq" open>
           <summary>¿El presupuesto tiene costo?</summary>
-          <p>No, para particulares el diagnóstico es sin cargo: revisamos el equipo, te informamos qué falla tiene y cuánto cuesta repararlo, y la decisión de seguir adelante es tuya. Si es para una empresa u oficina, la visita tiene costo: mirá el <a href="empresas.html">servicio para empresas</a>.</p>
+          <p>No, para particulares el diagnóstico es sin cargo: revisamos el equipo, te decimos qué tiene y cuánto cuesta, y la decisión es tuya. Para empresas la visita tiene costo: mirá el <a href="empresas.html">servicio para empresas</a>.</p>
         </details>
-        <details>
+        <details name="faq">
           <summary>¿Tengo que llevar el equipo o lo retiran?</summary>
-          <p>Las dos opciones. Podés acercarlo a Congreso con turno previo y te ahorrás el envío. Si preferís, coordinamos el retiro y la entrega en moto en cualquier barrio de la Ciudad de Buenos Aires: el envío se cobra aparte de la reparación y te pasamos el precio antes. Si no aprobás el presupuesto, el viaje se cobra igual.</p>
+          <p>Las dos opciones. Podés acercarlo a Congreso con turno previo y te ahorrás el envío. O coordinamos retiro y entrega en moto en cualquier barrio de CABA: el envío se cobra aparte y te lo pasamos antes. Si no aprobás el presupuesto, el viaje se cobra igual.</p>
         </details>
-        <details>
+        <details name="faq">
           <summary>¿Cuánto tarda una reparación?</summary>
-          <p>La mayoría de los trabajos se entregan en el día: formateo, cambio a SSD, limpieza, memoria. Las reparaciones de bisagras, las de placa o las que requieren repuestos pueden llevar algunos días; siempre damos un plazo estimado antes de empezar.</p>
+          <p>La mayoría se entrega en el día: formateo, SSD, limpieza, memoria. Bisagras, placa o trabajos con repuestos pueden llevar algunos días; siempre te damos un plazo antes de empezar.</p>
         </details>
-        <details>
-          <summary>¿Los trabajos tienen garantía?</summary>
-          <p>Sí, todos los trabajos se entregan con garantía por escrito. Si la falla reparada reaparece dentro del plazo, la resolvemos sin cargo.</p>
+        <details name="faq">
+          <summary>¿Qué cubre la garantía?</summary>
+          <p>Todos los trabajos tienen garantía por escrito. Si la falla reparada reaparece dentro del plazo, la resolvemos sin cargo. No cubre golpes, líquidos ni fallas distintas a la reparada.</p>
         </details>
-        <details>
+        <details name="faq">
           <summary>¿Qué pasa si no conviene reparar el equipo?</summary>
-          <p>Te lo decimos con franqueza. Si no tiene arreglo, o el costo no justifica seguir invirtiendo en ese equipo, te lo explicamos y no pagás nada (si lo buscamos en moto, el viaje sí se cobra). Te orientamos sobre las alternativas.</p>
+          <p>Te lo decimos con franqueza y no pagás la reparación. Si lo buscamos en moto, el viaje sí se cobra. Te orientamos sobre las alternativas.</p>
         </details>
-        <details>
+        <details name="faq">
           <summary>¿Pierdo mis fotos y archivos?</summary>
-          <p>No. Antes de formatear hacemos una copia de todo el disco, así no se pierde nada.</p>
+          <p>No. Antes de formatear hacemos una copia de todo el disco.</p>
         </details>
-        <details>
-          <summary>¿Cuándo se paga?</summary>
-          <p>Cuando retirás el equipo reparado, en efectivo o por transferencia. Antes no pagás nada: primero te decimos qué tiene y cuánto sale, y vos decidís.</p>
+        <details name="faq">
+          <summary>¿Cómo y cuándo se paga?</summary>
+          <p>Al retirar el equipo reparado, en efectivo o por transferencia. Antes no pagás nada.</p>
         </details>
-        <details>
-          <summary>¿Dónde están?</summary>
-          <p>En Congreso. Trabajamos con turno: cuando coordinás por WhatsApp te pasamos la dirección y el horario para traerlo.</p>
+        <details name="faq">
+          <summary>¿Dónde están y cómo llego?</summary>
+          <p>En Congreso, a pocas cuadras de Plaza Congreso (subte A). Atendemos con turno: al coordinar por WhatsApp te pasamos la dirección exacta y el horario.</p>
         </details>
-        <details>
+        <details name="faq">
           <summary>¿Reparan PC de escritorio y notebooks?</summary>
-          <p>Sí. Trabajamos con computadoras de escritorio, notebooks y netbooks de todas las marcas, para uso hogareño, de oficina y profesional.</p>
+          <p>Sí. Computadoras de escritorio, notebooks y netbooks de todas las marcas, para uso hogareño, de oficina y profesional.</p>
         </details>
       </div>
     </div>
@@ -646,42 +644,40 @@
   <div class="wrap">
     <h2>Contame qué le pasa y te digo cuánto sale</h2>
     <p>Escribinos por WhatsApp. El diagnóstico es sin cargo y vos decidís antes de que toquemos nada.</p>
-    <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20consultar%20por%20una%20reparaci%C3%B3n." rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
-      Pedir presupuesto sin cargo
-    </a>
+    <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20consultar%20por%20una%20reparaci%C3%B3n." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>Pedir presupuesto sin cargo</a>
     <a class="phone" href="tel:+5491139333526">o llamá al 11 3933-3526</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div class="foot-brand">ChipZone · Servicio técnico de computadoras</div>
+    <div class="foot-brand"><svg class="mark-iso" viewBox="-138 -138 252 276" aria-hidden="true" focusable="false"><defs><mask id="mark-vias-f" maskUnits="userSpaceOnUse" x="-70" y="-70" width="140" height="140"><rect x="-70" y="-70" width="140" height="140" fill="#fff"/><circle cx="-36" cy="-36" r="8" fill="#000"/><circle cx="36" cy="36" r="8" fill="#000"/></mask></defs><g fill="#fff"><rect x="-54" y="-138" width="20" height="28" rx="4"/><rect x="-10" y="-138" width="20" height="28" rx="4"/><rect x="34" y="-138" width="20" height="28" rx="4"/><rect x="-54" y="110" width="20" height="28" rx="4"/><rect x="-10" y="110" width="20" height="28" rx="4"/><rect x="34" y="110" width="20" height="28" rx="4"/><rect x="-138" y="-54" width="28" height="20" rx="4"/><rect x="-138" y="-10" width="28" height="20" rx="4"/><rect x="-138" y="34" width="28" height="20" rx="4"/></g><path d="M96 -40 V-56 A40 40 0 0 0 56 -96 H-56 A40 40 0 0 0 -96 -56 V56 A40 40 0 0 0 -56 96 H56 A40 40 0 0 0 96 56 V40" fill="none" stroke="#fff" stroke-width="36"/><g mask="url(#mark-vias-f)" fill="#00C8FF"><path d="M-36 -36 H36 L-36 36 H36" fill="none" stroke="#00C8FF" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><circle cx="-36" cy="-36" r="20"/><circle cx="36" cy="36" r="20"/></g></svg><b>Chip<span>Zone</span></b> · Servicio técnico de computadoras</div>
     <div class="foot-cols">
-      <div><b>Zona</b>Base en Congreso, Ciudad de Buenos Aires.<br>Retiro y entrega a domicilio en Once, Balvanera, Monserrat, San Cristóbal, Almagro, Boedo, Caballito, Recoleta, Palermo, Villa Crespo, San Telmo, Retiro y toda CABA.</div>
-      <div><b>Horario</b>Lunes a viernes<br>de 9 a 18 h</div>
-      <div><b>Contacto</b><a href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20consultar%20por%20mi%20notebook." rel="noopener">WhatsApp 11 3933-3526</a><br>Presupuesto sin cargo para particulares</div>
+      <div><b>Zona</b>Base en Congreso, Ciudad de Buenos Aires. Atendemos con turno.<br>Retiro y entrega en moto en toda CABA.</div>
+      <div><b>Horario</b>Lunes a viernes de 9 a 18 h</div>
+      <div><b>Contacto</b><a href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20consultar%20por%20mi%20notebook." target="_blank" rel="noopener">WhatsApp 11 3933-3526</a><br>Presupuesto sin cargo para particulares</div>
     </div>
-    <div class="foot-social">
-      <a href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20consultar%20por%20mi%20notebook." rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg></a>
-      <a href="https://www.instagram.com/chipzoneinformatica" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <a href="https://www.facebook.com/profile.php?id=1326335770559513" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3l.5-3H14V4.5c0-.8.3-1.5 1.6-1.5H18V.2C17.5.1 16.3 0 15 0c-2.9 0-4.7 1.7-4.7 4.9V6H7v3h3.3v9H14z"/></svg></a>
-    </div>
-    <p class="legal">ChipZone — Servicio técnico presencial de computadoras y notebooks en la Ciudad de Buenos Aires. · <a href="empresas.html" style="color:inherit">Servicio para empresas</a> · <a href="privacy.html" style="color:inherit">Política de privacidad</a></p>
+    <ul class="foot-links">
+      <li><a href="https://www.instagram.com/chipzoneinformatica" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=1326335770559513" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3l.5-3H14V4.5c0-.8.3-1.5 1.6-1.5H18V.2C17.5.1 16.3 0 15 0c-2.9 0-4.7 1.7-4.7 4.9V6H7v3h3.3v9H14z"/></svg>Facebook</a></li>
+      <li><a href="https://maps.app.goo.gl/ZyZ62FHRqWuNeoZs6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Google Maps</a></li>
+    </ul>
+    <p class="legal">ChipZone — Servicio técnico presencial de computadoras y notebooks en la Ciudad de Buenos Aires. · <a href="empresas.html">Servicio para empresas</a> · <a href="privacy.html">Política de privacidad</a></p>
   </div>
 </footer>
 
 <div class="dock">
-  <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20consultar%20por%20una%20reparaci%C3%B3n." rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
-    Pedir presupuesto sin cargo
-  </a>
+  <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20consultar%20por%20mi%20notebook." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 17.9h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.68.69-2.54-.2-.32a8.16 8.16 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22a8.2 8.2 0 0 1 5.82 2.42 8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.22-8.23 8.22Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>WhatsApp</a>
+  <a class="btn btn--line" href="#donde">Cómo llegar</a>
 </div>
 <script>
-/* El dock de WhatsApp se esconde mientras el botón del hero está a la vista (sin JS queda fijo, como antes) */
-(function(){var d=document.querySelector('.dock'),c=document.querySelector('.hero .btn--wa');
+/* La barra del celular se esconde mientras los botones del hero están a la vista (sin JS queda fija) */
+(function(){var d=document.querySelector('.dock'),c=document.querySelector('.sintomas');
 if(!d||!c||!('IntersectionObserver' in window))return;
 new IntersectionObserver(function(e){d.classList.toggle('dock--oculto',e[0].isIntersecting)},{threshold:0}).observe(c);})();
+/* Preguntas: una abierta a la vez (en navegadores nuevos ya lo hace name="faq") */
+(function(){var ds=document.querySelectorAll('.faq details');
+ds.forEach(function(d){d.addEventListener('toggle',function(){if(d.open)ds.forEach(function(o){if(o!==d)o.open=false})})});})();
 </script>
 
 <script type="application/ld+json">
@@ -752,47 +748,74 @@ new IntersectionObserver(function(e){d.classList.toggle('dock--oculto',e[0].isIn
     {
       "@type": "Question",
       "name": "¿El presupuesto tiene costo?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No, para particulares el diagnóstico es sin cargo: revisamos el equipo, te informamos qué falla tiene y cuánto cuesta repararlo, y la decisión de seguir adelante es tuya. Para empresas u oficinas la visita tiene costo." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, para particulares el diagnóstico es sin cargo: revisamos el equipo, te decimos qué tiene y cuánto cuesta, y la decisión es tuya. Para empresas la visita tiene costo: mirá el servicio para empresas."
+      }
     },
     {
       "@type": "Question",
       "name": "¿Tengo que llevar el equipo o lo retiran?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Las dos opciones. Podés acercarlo a Congreso con turno previo y te ahorrás el envío. Si preferís, coordinamos el retiro y la entrega en moto en cualquier barrio de la Ciudad de Buenos Aires: el envío se cobra aparte de la reparación y te pasamos el precio antes. Si no aprobás el presupuesto, el viaje se cobra igual." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las dos opciones. Podés acercarlo a Congreso con turno previo y te ahorrás el envío. O coordinamos retiro y entrega en moto en cualquier barrio de CABA: el envío se cobra aparte y te lo pasamos antes. Si no aprobás el presupuesto, el viaje se cobra igual."
+      }
     },
     {
       "@type": "Question",
       "name": "¿Cuánto tarda una reparación?",
-      "acceptedAnswer": { "@type": "Answer", "text": "La mayoría de los trabajos se entregan en el día: formateo, cambio a SSD, limpieza, memoria. Las reparaciones de bisagras, las de placa o las que requieren repuestos pueden llevar algunos días; siempre damos un plazo estimado antes de empezar." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La mayoría se entrega en el día: formateo, SSD, limpieza, memoria. Bisagras, placa o trabajos con repuestos pueden llevar algunos días; siempre te damos un plazo antes de empezar."
+      }
     },
     {
       "@type": "Question",
-      "name": "¿Los trabajos tienen garantía?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Sí, todos los trabajos se entregan con garantía por escrito. Si la falla reparada reaparece dentro del plazo, la resolvemos sin cargo." }
+      "name": "¿Qué cubre la garantía?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Todos los trabajos tienen garantía por escrito. Si la falla reparada reaparece dentro del plazo, la resolvemos sin cargo. No cubre golpes, líquidos ni fallas distintas a la reparada."
+      }
     },
     {
       "@type": "Question",
       "name": "¿Qué pasa si no conviene reparar el equipo?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Te lo decimos con franqueza. Si no tiene arreglo, o el costo no justifica seguir invirtiendo en ese equipo, te lo explicamos y no pagás nada (si lo buscamos en moto, el viaje sí se cobra). Te orientamos sobre las alternativas." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Te lo decimos con franqueza y no pagás la reparación. Si lo buscamos en moto, el viaje sí se cobra. Te orientamos sobre las alternativas."
+      }
     },
     {
       "@type": "Question",
       "name": "¿Pierdo mis fotos y archivos?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. Antes de formatear hacemos una copia de todo el disco, así no se pierde nada." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Antes de formatear hacemos una copia de todo el disco."
+      }
     },
     {
       "@type": "Question",
-      "name": "¿Cuándo se paga?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Cuando retirás el equipo reparado, en efectivo o por transferencia. Antes no pagás nada: primero te decimos qué tiene y cuánto sale, y vos decidís." }
+      "name": "¿Cómo y cuándo se paga?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Al retirar el equipo reparado, en efectivo o por transferencia. Antes no pagás nada."
+      }
     },
     {
       "@type": "Question",
-      "name": "¿Dónde están?",
-      "acceptedAnswer": { "@type": "Answer", "text": "En Congreso. Trabajamos con turno: cuando coordinás por WhatsApp te pasamos la dirección y el horario para traerlo." }
+      "name": "¿Dónde están y cómo llego?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En Congreso, a pocas cuadras de Plaza Congreso (subte A). Atendemos con turno: al coordinar por WhatsApp te pasamos la dirección exacta y el horario."
+      }
     },
     {
       "@type": "Question",
       "name": "¿Reparan PC de escritorio y notebooks?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajamos con computadoras de escritorio, notebooks y netbooks de todas las marcas, para uso hogareño, de oficina y profesional." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Computadoras de escritorio, notebooks y netbooks de todas las marcas, para uso hogareño, de oficina y profesional."
+      }
     }
   ]
 }
