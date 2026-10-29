@@ -290,7 +290,7 @@
   .datos li { display: grid; grid-template-columns: 5.2rem 1fr; gap: .6rem; }
   .datos b { font-family: var(--font-mono); font-weight: 600; font-size: .85rem; color: var(--accent-ink); padding-top: .1rem; }
   .mapa { margin: 0; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); background: var(--surface); display: flex; flex-direction: column; }
-  .mapa svg { display: block; width: 100%; height: auto; flex: 1; background: var(--surface-2); }
+  .mapa iframe { display: block; width: 100%; height: 100%; min-height: 20rem; border: 0; flex: 1; background: var(--surface-2); }
   .mapa figcaption { font-size: .82rem; color: var(--ink-2); padding: .7rem 1rem; border-top: 1px solid var(--line); }
   .m-av { stroke: var(--surface); stroke-width: 12; fill: none; }
   .m-calle { stroke: var(--surface); stroke-width: 4; fill: none; opacity: .8; }
@@ -574,30 +574,13 @@
           <li><b>Moto</b><span>Retiro y entrega en Once, Balvanera, Monserrat, San Cristóbal, Almagro, Caballito, Recoleta, Palermo y toda CABA</span></li>
         </ul>
         <div class="btn-row">
-          <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20pedir%20turno%20para%20llevar%20mi%20equipo%20a%20Congreso." target="_blank" rel="noopener">Pedir turno y dirección</a>
+          <a class="btn btn--wa" href="https://wa.me/5491139333526?text=Hola%21%20Vi%20la%20web.%20Quiero%20pedir%20turno%20para%20llevar%20mi%20equipo%20a%20Congreso." target="_blank" rel="noopener">Pedir turno</a>
           <a class="btn btn--line" href="https://maps.app.goo.gl/ZyZ62FHRqWuNeoZs6" target="_blank" rel="noopener">Ver en Google Maps</a>
         </div>
       </div>
-      <!-- croquis de la zona de Plaza Congreso, sin marcar el local -->
       <figure class="mapa">
-        <svg viewBox="0 0 400 300" role="img" aria-labelledby="mapa-t">
-          <title id="mapa-t">Croquis de la zona: Plaza Congreso, avenidas Rivadavia, Callao, Entre Ríos y de Mayo, y las estaciones Congreso y Sáenz Peña de la línea A</title>
-          <rect class="m-plaza" x="150" y="128" width="150" height="54" rx="6"/>
-          <text class="m-plaza-t" x="225" y="160" text-anchor="middle">Plaza Congreso</text>
-          <path class="m-av" d="M0 118 H400"/><path class="m-av" d="M0 192 H400"/>
-          <path class="m-av" d="M140 0 V300"/><path class="m-av" d="M300 155 H400"/>
-          <path class="m-calle" d="M220 0 V118 M300 0 V118 M60 0 V300 M220 192 V300 M300 192 V300 M0 40 H400 M0 260 H400"/>
-          <text class="m-t" x="8" y="111">Av. Rivadavia</text>
-          <text class="m-t" x="8" y="210">H. Yrigoyen</text>
-          <text class="m-t" x="148" y="24">Av. Callao</text>
-          <text class="m-t" x="148" y="290">Av. Entre Ríos</text>
-          <text class="m-t" x="306" y="176">Av. de Mayo</text>
-          <g class="m-sub"><circle cx="140" cy="118" r="11"/><text x="140" y="122" text-anchor="middle">A</text></g>
-          <text class="m-st" x="88" y="98">Congreso</text>
-          <g class="m-sub"><circle cx="372" cy="155" r="11"/><text x="372" y="159" text-anchor="middle">A</text></g>
-          <text class="m-st" x="392" y="138" text-anchor="end">Sáenz Peña</text>
-        </svg>
-        <figcaption>Croquis de la zona: Sarandí 86, Congreso.</figcaption>
+        <iframe title="Mapa de ChipZone, Sarandí 86, Congreso, Ciudad de Buenos Aires" src="https://maps.google.com/maps?q=Sarand%C3%AD%2086%2C%20Ciudad%20de%20Buenos%20Aires&amp;z=16&amp;output=embed" width="600" height="400" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <figcaption>Sarandí 86, Congreso, CABA.</figcaption>
       </figure>
     </div>
   </section>
@@ -677,7 +660,7 @@
       <li><a href="https://www.facebook.com/profile.php?id=1326335770559513" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3l.5-3H14V4.5c0-.8.3-1.5 1.6-1.5H18V.2C17.5.1 16.3 0 15 0c-2.9 0-4.7 1.7-4.7 4.9V6H7v3h3.3v9H14z"/></svg>Facebook</a></li>
       <li><a href="https://maps.app.goo.gl/ZyZ62FHRqWuNeoZs6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Google Maps</a></li>
     </ul>
-    <p class="legal">ChipZone — Servicio técnico presencial de computadoras y notebooks en la Ciudad de Buenos Aires. · <a href="empresas.html">Servicio para empresas</a> · <a href="privacy.html">Política de privacidad</a></p>
+    <p class="legal">ChipZone es una marca de JC Comercio. Servicio técnico presencial de computadoras y notebooks en la Ciudad de Buenos Aires. · <a href="empresas.html">Servicio para empresas</a> · <a href="privacy.html">Política de privacidad</a></p>
   </div>
 </footer>
 
